@@ -12,6 +12,7 @@ import java.util.Date;
 @Transactional(readOnly = true)
 public class UserService {
     private final UserJPARepository userJPARepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public void regist(UserRequest.RegistDTO registDTO) {
@@ -29,6 +30,7 @@ public class UserService {
                 .createAt(date)
                 .unregist('Y')
                 .build();
+        registDTO.setPassword(passwordEncoder.encode(registDTO.getPassword()));
 
         userJPARepository.save(user);
     }

@@ -18,17 +18,6 @@ public class UserController {
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
-    @PostMapping("/regist/check")
-    public ResponseEntity<?> check(@RequestBody UserRequest.CheckDTO checkDTO) {
-        if(!userService.check(checkDTO.getUserId())) {
-            return ResponseEntity.ok().body(ApiUtils.success(null));
-        } else if(userService.check(checkDTO.getUserId())) {
-            throw new RuntimeException("계정 중복");
-        }
-
-        return null;
-    }
-
     @PostMapping("/login")
     public ResponseEntity<?> login() {
         System.out.println("true = " + true);

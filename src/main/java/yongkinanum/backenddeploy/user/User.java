@@ -17,17 +17,22 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
+    @Column(length = 64, nullable = false)
     private String userName;
 
-    @Column(unique = true)
+    @Column(length = 128, nullable = false, unique = true)
     private String userId;
 
+    @Column(length = 256, nullable = false)
     private String password;
 
+    @Column(length = 32, nullable = false)
     private String role;
 
+    @Column(nullable = false)
     private Date createAt;
 
+    @Column(length = 1, nullable = false)
     private Character unregist;
 
     @Builder

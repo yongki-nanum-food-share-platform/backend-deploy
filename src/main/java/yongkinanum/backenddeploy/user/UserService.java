@@ -21,6 +21,7 @@ public class UserService {
         if(check(registDTO.getUserId())) {
             throw new Exception409("계정이 중복됩니다.");
         }
+        sameIdCheck(registDTO.getUserId());
 
         User user = User.builder()
                 .userName(registDTO.getUserName())
@@ -36,6 +37,7 @@ public class UserService {
     }
 
     public boolean check(String userId) {
+    public void sameIdCheck(String userId) {
         User findUser = userJPARepository.findByUserId(userId);
 
         return findUser != null;

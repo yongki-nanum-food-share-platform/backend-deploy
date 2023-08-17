@@ -2,8 +2,11 @@ package yongkinanum.backenddeploy.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import yongkinanum.backenddeploy.core.utils.ApiUtils;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
@@ -12,16 +15,17 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/regist")
-    public ResponseEntity<?> regist(@RequestBody UserRequest.RegistDTO registDTO) {
+    public ResponseEntity<?> regist(@RequestBody @Valid UserRequest.RegistDTO registDTO, Errors errors) {
         userService.regist(registDTO);
 
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login() {
-        System.out.println("true = " + true);
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<?> login(@RequestBody UserRequest.LoginDTO loginDTO, Errors errors) {
+        userService.login(loginDTO);
+
+        return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
     @GetMapping("/")

@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class UserService {
     private final UserJPARepository userJPARepository;
 

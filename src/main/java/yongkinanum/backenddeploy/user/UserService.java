@@ -23,7 +23,7 @@ public class UserService {
         userJPARepository.save(user);
     }
 
-    public void sameIdCheck(String userId) {
+    private void sameIdCheck(String userId) {
         User findUser = userJPARepository.findByUserId(userId);
 
         if(findUser != null) {

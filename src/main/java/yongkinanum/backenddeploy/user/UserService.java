@@ -1,11 +1,10 @@
 package yongkinanum.backenddeploy.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yongkinanum.backenddeploy.core.error.exception.Exception409;
-
-import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -16,8 +15,6 @@ public class UserService {
 
     @Transactional
     public void regist(UserRequest.RegistDTO registDTO) {
-        Date date = new Date();
-
         sameIdCheck(registDTO.getUserId());
 
         registDTO.setPassword(passwordEncoder.encode(registDTO.getPassword()));
@@ -34,5 +31,7 @@ public class UserService {
         }
     }
 
-    
+    public void login() {
+
+    }
 }

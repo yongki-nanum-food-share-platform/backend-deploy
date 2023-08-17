@@ -18,9 +18,6 @@ public class UserService {
     public void regist(UserRequest.RegistDTO registDTO) {
         Date date = new Date();
 
-        if(check(registDTO.getUserId())) {
-            throw new Exception409("계정이 중복됩니다.");
-        }
         sameIdCheck(registDTO.getUserId());
 
         registDTO.setPassword(passwordEncoder.encode(registDTO.getPassword()));
@@ -29,11 +26,12 @@ public class UserService {
         userJPARepository.save(user);
     }
 
-    public boolean check(String userId) {
     public void sameIdCheck(String userId) {
         User findUser = userJPARepository.findByUserId(userId);
 
-        return findUser != null;
+        if(findUser != null) {
+            throw new Exception409("이미 존재하는 아이디입니다.");
+        }
     }
 
     

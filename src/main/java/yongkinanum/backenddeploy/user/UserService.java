@@ -23,15 +23,8 @@ public class UserService {
         }
         sameIdCheck(registDTO.getUserId());
 
-        User user = User.builder()
-                .userName(registDTO.getUserName())
-                .userId(registDTO.getUserId())
-                .password(registDTO.getPassword())
-                .role(String.valueOf(Role.ROLE_USER))
-                .createAt(date)
-                .unregist('Y')
-                .build();
         registDTO.setPassword(passwordEncoder.encode(registDTO.getPassword()));
+        User user = registDTO.toEntity();
 
         userJPARepository.save(user);
     }

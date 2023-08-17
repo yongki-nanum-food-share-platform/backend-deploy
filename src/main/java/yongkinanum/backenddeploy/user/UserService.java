@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import yongkinanum.backenddeploy.core.error.exception.Exception400;
 import yongkinanum.backenddeploy.core.error.exception.Exception409;
 
 @Service
@@ -31,7 +32,15 @@ public class UserService {
         }
     }
 
-    public void login() {
+    public void login(UserRequest.LoginDTO loginDTO) {
+        User user = userJPARepository.findByUserId(loginDTO.getUserId());
 
+        if(user == null) {
+            throw new Exception400("로그인에 실패하였습니다.");
+        }
+
+        if(!user.getUserId().equals(loginDTO.getUserId()) || !passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
+            throw new Exception400("로그인에 실패하였습니다.");
+        }
     }
 }

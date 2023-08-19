@@ -29,7 +29,7 @@ public class UserController {
         return ResponseEntity.ok().header(JwtProvider.HEADER, jwt).body(ApiUtils.success(null));
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<?> find() {
         return ResponseEntity.ok("ok");
     }

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import yongkinanum.backenddeploy.core.security.JwtProvider;
 import yongkinanum.backenddeploy.core.utils.ApiUtils;
 
 import javax.validation.Valid;
@@ -23,9 +24,9 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserRequest.LoginDTO loginDTO, Errors errors) {
-        userService.login(loginDTO);
+        String jwt = userService.login(loginDTO);
 
-        return ResponseEntity.ok().body(ApiUtils.success(null));
+        return ResponseEntity.ok().header(JwtProvider.HEADER, jwt).body(ApiUtils.success(null));
     }
 
     @GetMapping("/")

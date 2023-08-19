@@ -30,12 +30,35 @@ class UserRequest {
         )
         private String password;
 
+        @NotBlank
+        private String role;
+
         public User toEntity() {
+            if(role.equals("가게사장님")) {
+                return User.builder()
+                        .userName(userName)
+                        .userId(userId)
+                        .password(password)
+                        .role(Role.ROLE_SHOPPER.getDescription())
+                        .createAt(new Date())
+                        .unregist('Y')
+                        .build();
+            } else if (role.equals("라이더")) {
+                return User.builder()
+                        .userName(userName)
+                        .userId(userId)
+                        .password(password)
+                        .role(Role.ROLE_DELIVERYMAN.getDescription())
+                        .createAt(new Date())
+                        .unregist('Y')
+                        .build();
+            }
+
             return User.builder()
                     .userName(userName)
                     .userId(userId)
                     .password(password)
-                    .role(String.valueOf(Role.ROLE_USER))
+                    .role(Role.ROLE_USER.getDescription())
                     .createAt(new Date())
                     .unregist('Y')
                     .build();

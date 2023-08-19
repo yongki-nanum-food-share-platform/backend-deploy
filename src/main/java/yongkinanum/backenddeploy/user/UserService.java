@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yongkinanum.backenddeploy.core.error.exception.Exception400;
 import yongkinanum.backenddeploy.core.error.exception.Exception409;
+import yongkinanum.backenddeploy.core.security.JwtProvider;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +33,7 @@ public class UserService {
         }
     }
 
-    public void login(UserRequest.LoginDTO loginDTO) {
+    public String login(UserRequest.LoginDTO loginDTO) {
         User user = userJPARepository.findByUserId(loginDTO.getUserId());
 
         if(user == null) {
@@ -42,5 +43,7 @@ public class UserService {
         if(!user.getUserId().equals(loginDTO.getUserId()) || !passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
             throw new Exception400("로그인에 실패하였습니다.");
         }
+
+        return JwtProvider.create(user);
     }
 }

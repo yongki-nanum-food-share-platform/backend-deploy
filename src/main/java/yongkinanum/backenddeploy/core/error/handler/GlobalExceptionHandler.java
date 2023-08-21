@@ -30,6 +30,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.body(), e.status());
     }
 
+    @ExceptionHandler(Exception409.class)
+    public ResponseEntity<?> conflict(Exception409 e){
+        return new ResponseEntity<>(e.body(), e.status());
+    }
+
     @ExceptionHandler(Exception500.class)
     public ResponseEntity<?> serverError(Exception500 e){
         return new ResponseEntity<>(e.body(), e.status());

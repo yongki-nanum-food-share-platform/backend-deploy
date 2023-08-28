@@ -2,8 +2,10 @@ package yongkinanum.backenddeploy.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import yongkinanum.backenddeploy.core.security.CustomUserDetails;
 import yongkinanum.backenddeploy.core.security.JwtProvider;
 import yongkinanum.backenddeploy.core.utils.ApiUtils;
 
@@ -35,8 +37,10 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> update() {
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<?> update(@RequestBody UserRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        userService.updateUserInfo(updateDTO, userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
     @DeleteMapping("/unregist")

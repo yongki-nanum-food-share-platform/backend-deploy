@@ -20,7 +20,9 @@ public class JwtProvider {
     public static String create(User user) {
         String jwt = JWT.create()
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXP))
-                .withClaim("id", user.getUserId())
+                .withClaim("userId", user.getUserId())
+                .withClaim("userName", user.getUserName())
+                .withClaim("password", user.getPassword())
                 .withClaim("role", user.getRole())
                 .sign(Algorithm.HMAC512(SECRET));
         return TOKEN_PREFIX + jwt;

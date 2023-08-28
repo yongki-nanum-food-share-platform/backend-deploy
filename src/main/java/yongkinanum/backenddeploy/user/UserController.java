@@ -44,7 +44,9 @@ public class UserController {
     }
 
     @DeleteMapping("/unregist")
-    public ResponseEntity<?> unregist() {
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<?> unregist(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        userService.unregistUser(userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 }

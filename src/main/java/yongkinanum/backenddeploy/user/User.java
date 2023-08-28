@@ -29,6 +29,7 @@ public class User {
     @Column(nullable = false)
     private Date createAt;
 
+    @Setter
     @Column(length = 1, nullable = false)
     private Character unregist;
 

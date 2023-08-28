@@ -47,7 +47,36 @@ public class UserService {
 
         return JwtProvider.create(user);
         return JwtProvider.create(findUser);
+    public void updateUserInfo(UserRequest.UpdateDTO updateDTO, User user) {
+        User findUser = userJPARepository.findByUserId(user.getUserId());
         checkUnregistUser(findUser);
+
+        if(updateDTO.getOldPassword() != null && !passwordEncoder.matches(updateDTO.getOldPassword(), findUser.getPassword())) {
+            throw new Exception401("인증되지 않았습니다.");
+        }
+
+        // 변경할 수 있는 정보가 없을 때
+        if(updateDTO.getNewNickname() == null && updateDTO.getNewPassword() == null) {
+            throw new Exception400("잘못된 요청입니다.");
+        }
+
+        // 비밀번호만 변경할 때
+        if(updateDTO.getNewNickname() == null && updateDTO.getNewPassword() != null) {
+            findUser.updatePassword(passwordEncoder.encode(updateDTO.getNewPassword()));
+        }
+
+        // 닉네임만 변경할 때
+        if(updateDTO.getNewNickname() != null && updateDTO.getNewPassword() == null) {
+            findUser.updateUserName(updateDTO.getNewNickname());
+        }
+
+        // 닉네임과 비밀번호 모두 변경할 때
+        if(updateDTO.getNewNickname() != null && updateDTO.getNewPassword() != null) {
+            findUser.update(updateDTO.getNewNickname(), passwordEncoder.encode(updateDTO.getNewPassword()));
+        }
+    }
+
+    @Transactional
     public void unregistUser(User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());
         checkUnregistUser(findUser);

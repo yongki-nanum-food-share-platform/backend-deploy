@@ -47,7 +47,13 @@ public class UserService {
 
         return JwtProvider.create(user);
         checkUnregistUser(findUser);
+    public void unregistUser(User user) {
+        User findUser = userJPARepository.findByUserId(user.getUserId());
         checkUnregistUser(findUser);
+
+        findUser.setUnregist('N');
+    }
+
     private void checkUnregistUser(User user) {
         if(user.getUnregist() == 'N') {
             throw new Exception400("해당 유저의 정보를 찾을 수 없습니다.");

@@ -1,9 +1,6 @@
 package yongkinanum.backenddeploy.user;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -44,5 +41,18 @@ public class User {
         this.role = role;
         this.createAt = createAt;
         this.unregist = unregist;
+    }
+
+    public void update(String newNickname, String newPassword) {
+        this.userName = newNickname;
+        this.password = newPassword;
+    }
+
+    public void updateUserName(String newNickname) {
+        this.userName = newNickname;
+    }
+
+    public void updatePassword(String newPassword) {
+        this.password = newPassword;
     }
 }

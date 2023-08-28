@@ -4,10 +4,10 @@ import lombok.Getter;
 
 @Getter
 public enum Role {
-    ROLE_ADMIN("관리자"),
-    ROLE_USER("일반회원"),
-    ROLE_SHOPPER("가게사장님"),
-    ROLE_DELIVERYMAN("라이더");
+    ROLE_ADMIN("ADMIN"),
+    ROLE_USER("USER"),
+    ROLE_SHOPPER("SHOPPER"),
+    ROLE_RIDER("RIDER");
 
     private String description;
 

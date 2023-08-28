@@ -48,7 +48,7 @@ class UserRequest {
                         .userName(userName)
                         .userId(userId)
                         .password(password)
-                        .role(Role.ROLE_DELIVERYMAN.getDescription())
+                        .role(Role.ROLE_RIDER.getDescription())
                         .createAt(new Date())
                         .unregist('Y')
                         .build();

@@ -34,18 +34,19 @@ public class UserService {
     }
 
     public String login(UserRequest.LoginDTO loginDTO) {
-        User user = userJPARepository.findByUserId(loginDTO.getUserId());
+        User findUser = userJPARepository.findByUserId(loginDTO.getUserId());
         checkUnregistUser(findUser);
 
-        if(user == null) {
+        if(findUser == null) {
             throw new Exception400("로그인에 실패하였습니다.");
         }
 
-        if(!user.getUserId().equals(loginDTO.getUserId()) || !passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
+        if(!findUser.getUserId().equals(loginDTO.getUserId()) || !passwordEncoder.matches(loginDTO.getPassword(), findUser.getPassword())) {
             throw new Exception400("로그인에 실패하였습니다.");
         }
 
         return JwtProvider.create(user);
+        return JwtProvider.create(findUser);
         checkUnregistUser(findUser);
     public void unregistUser(User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());

@@ -35,6 +35,7 @@ public class UserService {
 
     public String login(UserRequest.LoginDTO loginDTO) {
         User user = userJPARepository.findByUserId(loginDTO.getUserId());
+        checkUnregistUser(findUser);
 
         if(user == null) {
             throw new Exception400("로그인에 실패하였습니다.");
@@ -45,5 +46,11 @@ public class UserService {
         }
 
         return JwtProvider.create(user);
+        checkUnregistUser(findUser);
+        checkUnregistUser(findUser);
+    private void checkUnregistUser(User user) {
+        if(user.getUnregist() == 'N') {
+            throw new Exception400("해당 유저의 정보를 찾을 수 없습니다.");
+        }
     }
 }

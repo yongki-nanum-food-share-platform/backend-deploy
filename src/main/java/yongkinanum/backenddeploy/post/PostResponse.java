@@ -27,7 +27,7 @@ public class PostResponse {
 
             public PostDTO(Post post) {
                 this.idx = post.getIdx();
-                this.image = post.getShop().getImage();
+                this.image = post.getShop().getBrand().getImage();
                 this.title = post.getTitle();
                 this.time = post.getTime();
                 this.place = post.getPlace();
@@ -60,7 +60,7 @@ public class PostResponse {
             this.place = post.getPlace();
             this.people = post.getPeople();
             this.shopName = post.getShop().getShopName();
-            this.image = post.getShop().getImage();
+            this.image = post.getShop().getBrand().getImage();
             this.tip = post.getShop().getTip();
         }
     }

@@ -32,12 +32,14 @@ public class UserController {
     }
 
     @GetMapping()
-    public ResponseEntity<?> find() {
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<?> find(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        UserResponse.FindDTO findDTO = userService.findUserInfo(userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestBody UserRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+    public ResponseEntity<?> update(@RequestBody @Valid UserRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
         userService.updateUserInfo(updateDTO, userDetails.getUser());
 
         return ResponseEntity.ok().body(ApiUtils.success(null));

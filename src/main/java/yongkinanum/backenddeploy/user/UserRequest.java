@@ -73,4 +73,28 @@ class UserRequest {
         @NotBlank
         private String password;
     }
+
+    @Getter
+    public static class UpdateDTO {
+        @NotBlank
+        @Pattern(regexp = "^[a-zA-Z가-힣]*$", message = "이름은 영문과 한글만 가능합니다.")
+        @Size(min = 2, max = 64, message = "길이는 2자 이상 64자 이하여아 합니다.")
+        private String newNickname;
+
+        @NotBlank
+        @Size(min = 8, max = 20, message = "8에서 20자 이내여야 합니다.")
+        @Pattern(
+                regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#$%^&+=!~`<>,./?;:'\"\\[\\]{}\\\\()|_-])\\S*$",
+                message = "영문 대소문자, 숫자, 특수문자가 하나씩은 포함되어야 합니다."
+        )
+        private String oldPassword;
+
+        @NotBlank
+        @Size(min = 8, max = 20, message = "8에서 20자 이내여야 합니다.")
+        @Pattern(
+                regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#$%^&+=!~`<>,./?;:'\"\\[\\]{}\\\\()|_-])\\S*$",
+                message = "영문 대소문자, 숫자, 특수문자가 하나씩은 포함되어야 합니다."
+        )
+        private String newPassword;
+    }
 }

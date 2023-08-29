@@ -5,14 +5,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yongkinanum.backenddeploy.core.error.exception.Exception400;
+import yongkinanum.backenddeploy.core.error.exception.Exception401;
+import yongkinanum.backenddeploy.core.error.exception.Exception404;
 import yongkinanum.backenddeploy.core.error.exception.Exception409;
 import yongkinanum.backenddeploy.core.security.JwtProvider;
+import yongkinanum.backenddeploy.post.Post;
+import yongkinanum.backenddeploy.post.PostJPARepository;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class UserService {
     private final UserJPARepository userJPARepository;
+    private final PostJPARepository postJPARepository;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
@@ -45,8 +52,20 @@ public class UserService {
             throw new Exception400("로그인에 실패하였습니다.");
         }
 
-        return JwtProvider.create(user);
         return JwtProvider.create(findUser);
+    }
+
+    // 탈퇴한 유저일 경우 조회 불가
+    public UserResponse.FindDTO findUserInfo(User user) {
+        User findUser = userJPARepository.findByUserId(user.getUserId());
+        checkUnregistUser(findUser);
+
+        List<Post> posts = postJPARepository.findByUserId(findUser.getUserId());
+
+        return new UserResponse.FindDTO(posts, findUser);
+    }
+
+    @Transactional
     public void updateUserInfo(UserRequest.UpdateDTO updateDTO, User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());
         checkUnregistUser(findUser);
@@ -86,7 +105,7 @@ public class UserService {
 
     private void checkUnregistUser(User user) {
         if(user.getUnregist() == 'N') {
-            throw new Exception400("해당 유저의 정보를 찾을 수 없습니다.");
+            throw new Exception404("해당 유저의 정보를 찾을 수 없습니다.");
         }
     }
 }

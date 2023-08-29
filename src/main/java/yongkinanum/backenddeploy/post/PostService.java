@@ -61,6 +61,10 @@ public class PostService {
                 () -> new Exception404("해당 게시물을 찾을 수 없습니다.")
         );
 
+        if(findPost.getDelete() == 'Y') {
+            throw new Exception404("해당 게시물은 삭제되었습니다.");
+        }
+
         return new PostResponse.FindDTO(findPost);
     }
 
@@ -70,7 +74,7 @@ public class PostService {
                 () -> new Exception404("해당 게시물을 찾을 수 없습니다.")
         );
 
-        User findUser = userJPARepository.findByUserId(findPost.getUser().getUserId());
+        User findUser = userJPARepository.findByUserId(user.getUserId());
 
         if(findPost.getUser() != findUser) {
             throw new Exception403("권한이 없습니다.");
@@ -81,5 +85,20 @@ public class PostService {
         findPost.setTime(updateDTO.getTime());
         findPost.setPlace(updateDTO.getPlace());
         findPost.setPeople(updateDTO.getPeople());
+    }
+
+    @Transactional
+    public void deletePost(Long idx, User user) {
+        Post findPost = postJPARepository.findById(idx).orElseThrow(
+                () -> new Exception404("해당 게시물을 찾을 수 없습니다.")
+        );
+
+        User findUser = userJPARepository.findByUserId(user.getUserId());
+
+        if(findPost.getUser() != findUser) {
+            throw new Exception403("권한이 없습니다.");
+        }
+
+        findPost.setDelete('Y');
     }
 }

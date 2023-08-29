@@ -37,14 +37,14 @@ public class PostController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestBody PostRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+    public ResponseEntity<?> update(@RequestBody @Valid PostRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
         postService.updatePost(updateDTO, userDetails.getUser());
 
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> delete(@RequestBody PostRequest.DeleteDTO deleteDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+    public ResponseEntity<?> delete(@RequestBody @Valid PostRequest.DeleteDTO deleteDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
         postService.deletePost(Long.parseLong(deleteDTO.getIdx()), userDetails.getUser());
 
         return ResponseEntity.ok().body(ApiUtils.success(null));

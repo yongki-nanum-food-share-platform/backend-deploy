@@ -16,6 +16,7 @@ INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, 
 -- INIT 브랜드
 INSERT INTO brand_tb (`idx`, `brand_name`) VALUES ('1', '굽네치킨');
 
+-- INIT 가게
 INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `image`, `star_point`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`) VALUES ('1', '굽네치킨 부산안락점', '부산광역시 동래구 안락동', '/images/1.jpg', '0.0', '0', 'Y', '3000', '2', '1');
 
 -- INIT 메뉴
@@ -41,5 +42,3 @@ INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('12', 
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('13', '고블링 소스 추가', '500', '3');
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('14', '마블링 소스 추가', '19000', '3');
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('15', '콜라 라지 변경', '2000', '3');
-
--- INIT 가게

@@ -1,8 +1,6 @@
 package yongkinanum.backenddeploy.shop;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import yongkinanum.backenddeploy.shop.brand.Brand;
 import yongkinanum.backenddeploy.user.User;
 
@@ -13,11 +11,9 @@ import javax.persistence.*;
         indexes = {
                 @Index(name = "shop_user_idx", columnList = "user_idx"),
                 @Index(name = "shop_brand_idx", columnList = "brand_idx")
-        },
-        uniqueConstraints = {
-                @UniqueConstraint(name = "uk_shop_user_brand", columnNames = {"brand_idx"})
         })
 @Getter
+@Setter
 @ToString
 @NoArgsConstructor
 public class Shop {
@@ -29,9 +25,6 @@ public class Shop {
 
     @Column(length = 128, nullable = false)
     private String shopAddress;
-
-    @Column(length = 512, nullable = false)
-    private String image;
 
     @Column(nullable = false)
     private Float starPoint;
@@ -50,4 +43,17 @@ public class Shop {
 
     @OneToOne(fetch = FetchType.LAZY)
     private Brand brand;
+
+    @Builder
+    public Shop(Long idx, String shopName, String shopAddress, Float starPoint, Integer orderCount, Character unregist, int tip, User user, Brand brand) {
+        this.idx = idx;
+        this.shopName = shopName;
+        this.shopAddress = shopAddress;
+        this.starPoint = starPoint;
+        this.orderCount = orderCount;
+        this.unregist = unregist;
+        this.tip = tip;
+        this.user = user;
+        this.brand = brand;
+    }
 }

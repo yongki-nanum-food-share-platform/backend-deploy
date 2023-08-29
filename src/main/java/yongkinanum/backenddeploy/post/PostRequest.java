@@ -62,4 +62,10 @@ class PostRequest {
         @NotBlank
         private String people;
     }
+
+    @Getter
+    public static class DeleteDTO {
+        @NotBlank
+        private String idx;
+    }
 }

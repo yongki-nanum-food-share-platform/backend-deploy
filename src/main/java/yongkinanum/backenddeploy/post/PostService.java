@@ -11,10 +11,8 @@ import yongkinanum.backenddeploy.shop.Shop;
 import yongkinanum.backenddeploy.shop.ShopJPARepository;
 import yongkinanum.backenddeploy.user.User;
 import yongkinanum.backenddeploy.user.UserJPARepository;
-import yongkinanum.backenddeploy.user.UserResponse;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

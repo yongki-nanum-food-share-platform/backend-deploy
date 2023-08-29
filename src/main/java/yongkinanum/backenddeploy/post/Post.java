@@ -52,7 +52,7 @@ public class Post {
     private Option option;
 
     @Builder
-    public Post(Long idx, String title, String content, String time, String place, String people, Date createAt, Character delete, User user) {
+    public Post(Long idx, String title, String content, String time, String place, String people, Date createAt, Character delete, User user, Shop shop, Option option) {
         this.idx = idx;
         this.title = title;
         this.content = content;
@@ -62,5 +62,7 @@ public class Post {
         this.createAt = createAt;
         this.delete = delete;
         this.user = user;
+        this.shop = shop;
+        this.option = option;
     }
 }

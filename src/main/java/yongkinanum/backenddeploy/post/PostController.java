@@ -42,4 +42,11 @@ public class PostController {
 
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> delete(@RequestBody PostRequest.DeleteDTO deleteDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        postService.deletePost(Long.parseLong(deleteDTO.getIdx()), userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(null));
+    }
 }

@@ -62,13 +62,15 @@ public class SecurityConfig {
         // 11. 인증, 권한 필터 설정
         http.authorizeRequests(
                 authorize -> authorize
-                        .antMatchers("/users", "users/update")
+                        .antMatchers(
+                                "/users", "/users/update", "/users/unregist",
+                                "/carts/**",
+                                "/posts/**",
+                                "/shops/{id:\\d+}")
                         .authenticated()
                         //권한 허용 테스트
-//                        .hasAuthority("SHOPPER")
-                        .antMatchers("/admin/**")
-                        .access("hasRole('ADMIN')")
-                        .anyRequest().permitAll()
+                        .antMatchers("/shops/regist", "/shops/update", "/shops/unregist")
+                        .hasAuthority("SHOPPER")
         );
 
 /*        http.authorizeRequests()

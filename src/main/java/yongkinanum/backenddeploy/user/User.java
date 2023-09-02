@@ -1,6 +1,7 @@
 package yongkinanum.backenddeploy.user;
 
 import lombok.*;
+import yongkinanum.backenddeploy.core.error.exception.Exception404;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -55,5 +56,11 @@ public class User {
 
     public void updatePassword(String newPassword) {
         this.password = newPassword;
+    }
+
+    public void findUserNullCheck(User user) {
+        if(user == null) {
+            throw new Exception404("해당 유저를 찾을 수 없습니다.");
+        }
     }
 }

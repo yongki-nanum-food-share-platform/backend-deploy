@@ -26,6 +26,9 @@ public class Shop {
     @Column(length = 128, nullable = false)
     private String shopAddress;
 
+    @Column(length = 512)
+    private String description;
+
     @Column(nullable = false)
     private Float starPoint;
 

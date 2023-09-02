@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import yongkinanum.backenddeploy.order.Order;
 import yongkinanum.backenddeploy.shop.Shop;
 import yongkinanum.backenddeploy.user.User;
 
@@ -14,7 +15,9 @@ import java.util.Date;
 @Table(name = "review_tb",
         indexes = {
                 @Index(name = "review_user_idx", columnList = "user_idx"),
-                @Index(name = "review_shop_idx", columnList = "shop_idx")
+                @Index(name = "review_shop_idx", columnList = "shop_idx"),
+                @Index(name = "review_order_idx", columnList = "order_idx")
+
         })
 @Getter
 @Setter
@@ -38,4 +41,7 @@ public class Review {
 
     @OneToOne(fetch = FetchType.LAZY)
     private Shop shop;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
 }

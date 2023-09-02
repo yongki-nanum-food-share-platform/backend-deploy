@@ -33,16 +33,14 @@ public class PostService {
                 () -> new Exception404("해당 옵션을 찾을 수 없습니다.")
         );
 
-        User authorUser = userJPARepository.findByUserId(user.getUserId());
+        User findUser = userJPARepository.findByUserId(user.getUserId());
 
-        if(authorUser == null) {
-            throw new Exception404("해당 유저를 찾을 수 없습니다.");
-        }
+        findUser.findUserNullCheck(findUser);
 
         Post post = writeDTO.toEntity();
         post.setShop(findShop);
 
-        post.setUser(authorUser);
+        post.setUser(findUser);
         post.setOption(findOption);
 
         postJPARepository.save(post);

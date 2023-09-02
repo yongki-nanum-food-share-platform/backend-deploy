@@ -31,9 +31,7 @@ public class CartService {
     public void addCarts(List<CartRequest.AddDTO> addDTOs, User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());
 
-        if(findUser == null) {
-            throw new Exception404("해당 유저를 찾을 수 없습니다.");
-        }
+        findUser.findUserNullCheck(findUser);
 
         Shop findShop = shopJPARepository.findByShopName(addDTOs.get(0).getShopName());
 
@@ -86,7 +84,7 @@ public class CartService {
         //동일한 옵션을 동시에 여러번 요청할 때 예외
         //예를들면 옵션 1번을 한 DTO에 두번 요청 시 예외 처리
         for (CartRequest.AddDTO addDTO : addDTOs) {
-            Long optionIdx = (long) addDTO.getIdx();
+            Long optionIdx = addDTO.getIdx();
             if (cartSet.contains(optionIdx)) {
                 throw new Exception400("동일한 옵션을 여러번 요청할 수 없습니다.");
             }
@@ -94,10 +92,10 @@ public class CartService {
             cartSet.add(optionIdx);
         }
 
-        //동일한 상품에 대한 요청이 아닐 시
+        /*//동일한 상품에 대한 요청이 아닐 시
         //예를들면 옵션 1번과 옵션 44번은 다른 상품이므로 장바구니 담기라는 기능에는 적합하지 않은 논리적인 모순
         List<Long> optionIdxs = addDTOs.stream()
-                .map(addDTO -> (long) addDTO.getIdx())
+                .map(addDTO -> addDTO.getIdx())
                 .collect(Collectors.toList());
 
         Option option = optionJPARepository.findById(optionIdxs.get(0)).orElseThrow(
@@ -113,15 +111,13 @@ public class CartService {
             if(findMenu != menu) {
                 throw new Exception400("다른 상품은 장바구니에 담을 수 없습니다.");
             }
-        }
+        }*/
     }
 
     public CartResponse.FindDTO findCarts(User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());
 
-        if(findUser == null) {
-            throw new Exception404("해당 유저를 찾을 수 없습니다.");
-        }
+        findUser.findUserNullCheck(findUser);
 
         List<Cart> carts = cartJPARepository.findAllByUserIdx(findUser.getIdx());
 
@@ -132,9 +128,7 @@ public class CartService {
     public void updateCarts(List<CartRequest.UpdateDTO> updateDTOs, User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());
 
-        if(findUser == null) {
-            throw new Exception404("해당 유저를 찾을 수 없습니다.");
-        }
+        findUser.findUserNullCheck(findUser);
 
         List<Cart> carts = cartJPARepository.findAllByUserIdx(findUser.getIdx());
 
@@ -176,10 +170,8 @@ public class CartService {
     public void clearCarts(User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());
 
-        if(findUser == null) {
-            throw new Exception404("해당 유저를 찾을 수 없습니다.");
-        }
+        findUser.findUserNullCheck(findUser);
 
-        cartJPARepository.deleteByUserId(findUser.getIdx());
+        cartJPARepository.deleteByUserIdx(findUser.getIdx());
     }
 }

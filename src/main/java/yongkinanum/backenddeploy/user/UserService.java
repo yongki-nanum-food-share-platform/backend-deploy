@@ -100,11 +100,11 @@ public class UserService {
         User findUser = userJPARepository.findByUserId(user.getUserId());
         checkUnregistUser(findUser);
 
-        findUser.setUnregist('N');
+        findUser.setUnregist('Y');
     }
 
     private void checkUnregistUser(User user) {
-        if(user.getUnregist() == 'N') {
+        if(user.getUnregist() == 'Y') {
             throw new Exception404("해당 유저의 정보를 찾을 수 없습니다.");
         }
     }

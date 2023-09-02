@@ -28,11 +28,6 @@ public class ShopService {
         User findUser = userJPARepository.findByUserId(user.getUserId());
         Brand findBrand = brandJPARepository.findByBrandName(registDTO.getBrandName());
 
-        // 가게 사장님이 아닐 경우
-        if(!findUser.getRole().equals("SHOPPER")) {
-            throw new Exception403("권한이 없습니다.");
-        }
-
         Shop shop = registDTO.toEntity();
         shop.setStarPoint(0.0F);
         shop.setOrderCount(0);
@@ -69,9 +64,7 @@ public class ShopService {
 
         User findUser = userJPARepository.findByUserId(user.getUserId());
 
-        if(findUser == null) {
-            throw new Exception404("해당 유저를 찾을 수 없습니다.");
-        }
+        findUser.findUserNullCheck(findUser);
 
         if(findUser != findShop.getUser()) {
             throw new Exception403("권한이 없습니다.");
@@ -97,9 +90,7 @@ public class ShopService {
 
         User findUser = userJPARepository.findByUserId(user.getUserId());
 
-        if(findUser == null) {
-            throw new Exception404("해당 유저를 찾을 수 없습니다.");
-        }
+        findUser.findUserNullCheck(findUser);
 
         if(findUser != findShop.getUser()) {
             throw new Exception403("권한이 없습니다.");

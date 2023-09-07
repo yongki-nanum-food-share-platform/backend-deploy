@@ -11,6 +11,8 @@ import yongkinanum.backenddeploy.core.error.exception.Exception409;
 import yongkinanum.backenddeploy.core.security.JwtProvider;
 import yongkinanum.backenddeploy.post.Post;
 import yongkinanum.backenddeploy.post.PostJPARepository;
+import yongkinanum.backenddeploy.user.address.Address;
+import yongkinanum.backenddeploy.user.address.AddressJPARepository;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ import java.util.List;
 public class UserService {
     private final UserJPARepository userJPARepository;
     private final PostJPARepository postJPARepository;
+    private final AddressJPARepository addressJPARepository;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
@@ -59,6 +62,16 @@ public class UserService {
     public UserResponse.FindDTO findUserInfo(User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());
         checkUnregistUser(findUser);
+
+        List<Post> posts = postJPARepository.findByUserId(findUser.getUserId());
+
+        return new UserResponse.FindDTO(posts, findUser);
+    }
+
+    public UserResponse.FindDTO findSpecificUserInfo(Long idx) {
+        User findUser = userJPARepository.findById(idx).orElseThrow(
+                () -> new Exception404("해당 유저를 찾을 수 없습니다.")
+        );
 
         List<Post> posts = postJPARepository.findByUserId(findUser.getUserId());
 
@@ -107,5 +120,29 @@ public class UserService {
         if(user.getUnregist() == 'Y') {
             throw new Exception404("해당 유저의 정보를 찾을 수 없습니다.");
         }
+    }
+
+    @Transactional
+    public void addUserAddress(UserRequest.AddAddressDTO addAddressDTO, User user) {
+        User findUser = userJPARepository.findByUserId(user.getUserId());
+
+        findUser.findUserNullCheck(findUser);
+
+        Address address = Address.builder()
+                .address(addAddressDTO.getAddress())
+                .user(findUser)
+                .build();
+
+        addressJPARepository.save(address);
+    }
+
+    public UserResponse.FindAddressDTO findUserAddresses(User user) {
+        User findUser = userJPARepository.findByUserId(user.getUserId());
+
+        findUser.findUserNullCheck(findUser);
+
+        List<Address> addresses = addressJPARepository.findAllAddressByUserIdx(findUser.getIdx());
+
+        return new UserResponse.FindAddressDTO(addresses);
     }
 }

@@ -1,7 +1,7 @@
 package yongkinanum.backenddeploy.shop;
 
 import lombok.Getter;
-import yongkinanum.backenddeploy.shop.review.Review;
+import yongkinanum.backenddeploy.review.Review;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +25,7 @@ public class ShopResponse {
             this.image = shop.getBrand().getImage();
             this.starPoint = shop.getStarPoint();
             this.orderCount = shop.getOrderCount();
-            this.reviewCount = reviews.size();
+            this.reviewCount = shop.getReviewCount();
             this.reviews = reviews.stream().map(ReviewDTO::new).collect(Collectors.toList());
         }
 

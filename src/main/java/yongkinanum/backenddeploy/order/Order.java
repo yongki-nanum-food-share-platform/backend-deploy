@@ -17,6 +17,9 @@ public class Order {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
+    @Column(length = 128, nullable = false)
+    private String orderName;
+
     @Setter
     @Column(length = 1, nullable = false)
     private Character cancel;
@@ -25,8 +28,9 @@ public class Order {
     private User user;
 
     @Builder
-    public Order(Long idx, Character cancel, User user) {
+    public Order(Long idx, String orderName, Character cancel, User user) {
         this.idx = idx;
+        this.orderName = orderName;
         this.cancel = cancel;
         this.user = user;
     }

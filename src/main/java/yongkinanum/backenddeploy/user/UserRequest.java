@@ -10,6 +10,7 @@ import java.util.Date;
 
 class UserRequest {
     @Getter
+    @Setter
     public static class RegistDTO {
         @NotBlank
         @Pattern(regexp = "^[a-zA-Z가-힣]*$", message = "이름은 영문과 한글만 가능합니다.")
@@ -21,7 +22,6 @@ class UserRequest {
         @Size(min = 8, max = 128, message = "길이는 8자 이상 128자 이하여야 합니다.")
         private String userId;
 
-        @Setter
         @NotBlank
         @Size(min = 8, max = 20, message = "8에서 20자 이내여야 합니다.")
         @Pattern(
@@ -41,7 +41,7 @@ class UserRequest {
                         .password(password)
                         .role(Role.ROLE_SHOPPER.getDescription())
                         .createAt(new Date())
-                        .unregist('Y')
+                        .unregist('N')
                         .build();
             } else if (role.equals("라이더")) {
                 return User.builder()
@@ -50,7 +50,7 @@ class UserRequest {
                         .password(password)
                         .role(Role.ROLE_RIDER.getDescription())
                         .createAt(new Date())
-                        .unregist('Y')
+                        .unregist('N')
                         .build();
             }
 
@@ -60,12 +60,13 @@ class UserRequest {
                     .password(password)
                     .role(Role.ROLE_USER.getDescription())
                     .createAt(new Date())
-                    .unregist('Y')
+                    .unregist('N')
                     .build();
         }
     }
 
     @Getter
+    @Setter
     public static class LoginDTO {
         @NotBlank
         private String userId;
@@ -75,26 +76,18 @@ class UserRequest {
     }
 
     @Getter
+    @Setter
     public static class UpdateDTO {
-        @NotBlank
-        @Pattern(regexp = "^[a-zA-Z가-힣]*$", message = "이름은 영문과 한글만 가능합니다.")
-        @Size(min = 2, max = 64, message = "길이는 2자 이상 64자 이하여아 합니다.")
         private String newNickname;
 
-        @NotBlank
-        @Size(min = 8, max = 20, message = "8에서 20자 이내여야 합니다.")
-        @Pattern(
-                regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#$%^&+=!~`<>,./?;:'\"\\[\\]{}\\\\()|_-])\\S*$",
-                message = "영문 대소문자, 숫자, 특수문자가 하나씩은 포함되어야 합니다."
-        )
         private String oldPassword;
 
-        @NotBlank
-        @Size(min = 8, max = 20, message = "8에서 20자 이내여야 합니다.")
-        @Pattern(
-                regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#$%^&+=!~`<>,./?;:'\"\\[\\]{}\\\\()|_-])\\S*$",
-                message = "영문 대소문자, 숫자, 특수문자가 하나씩은 포함되어야 합니다."
-        )
         private String newPassword;
+    }
+
+    @Getter
+    @Setter
+    public static class AddAddressDTO {
+        private String address;
     }
 }

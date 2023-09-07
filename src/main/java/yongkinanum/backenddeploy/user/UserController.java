@@ -24,6 +24,20 @@ public class UserController {
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
+    @PostMapping("/address/add")
+    public ResponseEntity<?> addAddress(@RequestBody UserRequest.AddAddressDTO addAddressDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        userService.addUserAddress(addAddressDTO, userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(null));
+    }
+
+    @GetMapping("/address")
+    public ResponseEntity<?> findAddress(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        UserResponse.FindAddressDTO findAddressDTO = userService.findUserAddresses(userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(findAddressDTO));
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserRequest.LoginDTO loginDTO, Errors errors) {
         String jwt = userService.login(loginDTO);
@@ -34,6 +48,13 @@ public class UserController {
     @GetMapping()
     public ResponseEntity<?> find(@AuthenticationPrincipal CustomUserDetails userDetails) {
         UserResponse.FindDTO findDTO = userService.findUserInfo(userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(findDTO));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findSpecificUser(@PathVariable Long id) {
+        UserResponse.FindDTO findDTO = userService.findSpecificUserInfo(id);
 
         return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }

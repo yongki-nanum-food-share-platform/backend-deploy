@@ -2,6 +2,7 @@ package yongkinanum.backenddeploy.user;
 
 import lombok.Getter;
 import yongkinanum.backenddeploy.post.Post;
+import yongkinanum.backenddeploy.user.address.Address;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +37,26 @@ public class UserResponse {
                 this.idx = post.getIdx();
                 this.title = post.getTitle();
                 this.createAt = post.getCreateAt().toString();
+            }
+        }
+    }
+
+    @Getter
+    public static class FindAddressDTO {
+        private List<AddressDTO> addresses;
+
+        public FindAddressDTO(List<Address> addresses) {
+            this.addresses = addresses.stream()
+                    .map(AddressDTO::new)
+                    .collect(Collectors.toList());
+        }
+
+        @Getter
+        public static class AddressDTO {
+            private String address;
+
+            public AddressDTO(Address address) {
+                this.address = address.getAddress();
             }
         }
     }

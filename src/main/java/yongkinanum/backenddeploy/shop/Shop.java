@@ -33,6 +33,9 @@ public class Shop {
     private Float starPoint;
 
     @Column(nullable = false)
+    private Integer reviewCount;
+
+    @Column(nullable = false)
     private Integer orderCount;
 
     @Column(length = 1, nullable = false)
@@ -48,11 +51,13 @@ public class Shop {
     private Brand brand;
 
     @Builder
-    public Shop(Long idx, String shopName, String shopAddress, Float starPoint, Integer orderCount, Character unregist, int tip, User user, Brand brand) {
+    public Shop(Long idx, String shopName, String shopAddress, String description, Float starPoint, Integer reviewCount, Integer orderCount, Character unregist, int tip, User user, Brand brand) {
         this.idx = idx;
         this.shopName = shopName;
         this.shopAddress = shopAddress;
+        this.description = description;
         this.starPoint = starPoint;
+        this.reviewCount = reviewCount;
         this.orderCount = orderCount;
         this.unregist = unregist;
         this.tip = tip;

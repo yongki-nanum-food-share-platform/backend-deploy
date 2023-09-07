@@ -12,11 +12,15 @@ import yongkinanum.backenddeploy.order.delivery.Delivery;
 import yongkinanum.backenddeploy.order.delivery.DeliveryJPARepository;
 import yongkinanum.backenddeploy.order.item.Item;
 import yongkinanum.backenddeploy.order.item.ItemJPARepository;
+import yongkinanum.backenddeploy.shop.Shop;
+import yongkinanum.backenddeploy.shop.ShopJPARepository;
 import yongkinanum.backenddeploy.user.User;
 import yongkinanum.backenddeploy.user.UserJPARepository;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +30,7 @@ public class OrderService {
     private final OrderJPARepository orderJPARepository;
     private final ItemJPARepository itemJPARepository;
     private final UserJPARepository userJPARepository;
+    private final ShopJPARepository shopJPARepository;
     private final CartJPARepository cartJPARepository;
     private final DeliveryJPARepository deliveryJPARepository;
 
@@ -41,8 +46,11 @@ public class OrderService {
             throw new Exception400("장바구니가 비어있습니다.");
         }
 
+        String orderName = String.format("%s 외 %d건",carts.get(0).getOption().getMenu().getMenuName(), carts.size() - 1);
+
         Order newOrder = Order.builder()
                 .user(findUser)
+                .orderName(orderName)
                 .cancel('N')
                 .build();
 
@@ -60,6 +68,24 @@ public class OrderService {
 
         //주문 영속화
         orderJPARepository.save(newOrder);
+
+        //가게 주문 수 증가
+        Set<Long> shopsIdx = new HashSet<>();
+
+        for(Cart cart : carts) {
+            Long findShopIdx = cart.getShop().getIdx();
+            if(shopsIdx.contains(findShopIdx)) {
+                continue;
+            }
+
+            shopsIdx.add(findShopIdx);
+
+            Shop findShop = shopJPARepository.findById(findShopIdx).orElseThrow(
+                    () -> new Exception404("해당 가게를 찾을 수 없습니다.")
+            );
+
+            findShop.setOrderCount(findShop.getOrderCount() + 1);
+        }
 
         //장바구니 비우기
         cartJPARepository.deleteByUserIdx(findUser.getIdx());

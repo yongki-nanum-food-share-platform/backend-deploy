@@ -1,9 +1,6 @@
 package yongkinanum.backenddeploy.user.address;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import yongkinanum.backenddeploy.user.User;
 
 import javax.persistence.*;
@@ -25,4 +22,11 @@ public class Address {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    @Builder
+    public Address(Long idx, String address, User user) {
+        this.idx = idx;
+        this.address = address;
+        this.user = user;
+    }
 }

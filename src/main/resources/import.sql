@@ -56,9 +56,12 @@ INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('15', 
 
 -- INIT 주문
 INSERT INTO order_tb (`idx`, `user_idx`, `cancel`, `order_name`) VALUES ('1', '3', 'N', '고추바사삭 외 0건');
+INSERT INTO order_tb (`idx`, `user_idx`, `cancel`, `order_name`) VALUES ('2', '3', 'Y', '고추바사삭 외 1건');
 
 -- INIT 주문 아이템
 INSERT INTO item_tb (`idx`, `quantity`, `price`, `create_at`, `order_idx`, `option_idx`, `shop_idx`) VALUES ('1', '10', '190000', '2023-08-29 13:54:19.823', '1', '1', '1');
+INSERT INTO item_tb (`idx`, `quantity`, `price`, `create_at`, `order_idx`, `option_idx`, `shop_idx`) VALUES ('2', '1', '16000', '2023-08-29 13:54:19.823', '2', '2', '1');
+
 
 -- INIT 배달
 INSERT INTO delivery_tb (`idx`, `address`, `status`, `order_idx`, `user_idx`) VALUES ('1', '연산동', 'Y', '1', '3');
@@ -70,3 +73,9 @@ INSERT INTO review_tb (`idx`, `content`, `star_point`, `create_at`, `user_idx`, 
 
 -- INIT POST
 INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`, `option_idx`) VALUES ('1', '테스트 포스트', '테스트 게시물입니다.', '17시', '연산동', '2', '2023-08-29 13:54:19.823', 'N', '3', '1', '1');
+
+INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('1', '5', '3', '1', '1');
+INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('2', '4', '3', '3', '1');
+INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('3', '3', '3', '4', '1');
+INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('4', '2', '3', '6', '1');
+INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('5', '1', '3', '7', '1');

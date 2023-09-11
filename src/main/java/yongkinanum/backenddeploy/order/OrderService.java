@@ -138,6 +138,18 @@ public class OrderService {
         return new OrderResponse.FindDTO(findOrder, items, delivery);
     }
 
+    public OrderResponse.FindCancelDTO findCancelOrder(User user) {
+        User findUser = userJPARepository.findByUserId(user.getUserId());
+
+        findUser.findUserNullCheck(findUser);
+
+        List<Order> orders = orderJPARepository.findCancelOrderByUserIdx(findUser.getIdx());
+
+        List<Item> items = itemJPARepository.findAllItemByUserIdx(findUser.getIdx());
+
+        return new OrderResponse.FindCancelDTO(orders, items);
+    }
+
     @Transactional
     public void cancelOrder(Long idx, User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());

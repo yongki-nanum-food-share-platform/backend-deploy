@@ -156,4 +156,87 @@ public class OrderResponse {
             }
         }
     }
+
+    @Getter
+    public static class FindCancelDTO {
+        private List<OrderDTO> orders;
+
+        public FindCancelDTO(List<Order> orders, List<Item> items) {
+            this.orders = orders.stream()
+                    .map(order -> new OrderDTO(order, items))
+                    .collect(Collectors.toList());
+        }
+
+        @Getter
+        public static class OrderDTO {
+            private Long idx;
+            private String image;
+            private String createAt;
+            private String shopName;
+            private List<ItemDTO> items;
+            private int price;
+
+            public OrderDTO(Order order, List<Item> items) {
+                this.idx = order.getIdx();
+                Item firstItem = items.stream()
+                        .filter(item -> item.getOrder().getIdx() == order.getIdx())
+                        .findFirst()
+                        .orElseThrow(() -> new IllegalArgumentException("No matching items found for order"));
+                this.image = firstItem.getShop().getBrand().getImage();
+                this.createAt = firstItem.getCreateAt().toString();
+                this.shopName = firstItem.getShop().getShopName();
+                this.items = items.stream()
+                        .filter(item -> item.getOrder().getIdx() == order.getIdx())
+                        .map(ItemDTO::new)
+                        .collect(Collectors.toList());
+                this.price = items.stream()
+                        .filter(item -> item.getOrder().getIdx() == order.getIdx())
+                        .mapToInt(Item::getPrice)
+                        .sum();
+            }
+
+            /*public OrderDTO(Order order, List<Item> items) {
+                this.idx = order.getIdx();
+                this.image = items.stream()
+                        .filter(item -> item.getOrder().getIdx() == order.getIdx())
+                        .collect(Collectors.toList())
+                        .get(0).getShop().getBrand().getImage();
+                this.createAt = items.stream()
+                        .filter(item -> item.getOrder().getIdx() == order.getIdx())
+                        .collect(Collectors.toList())
+                        .get(0).getCreateAt().toString();
+                this.shopName = items.stream()
+                        .filter(item -> item.getOrder().getIdx() == order.getIdx())
+                        .collect(Collectors.toList())
+                        .get(0).getShop().getShopName();
+                this.items = items.stream()
+                        .filter(item -> item.getOrder().getIdx() == order.getIdx())
+                        .collect(Collectors.toList())
+                        .stream()
+                        .map(ItemDTO::new)
+                        .collect(Collectors.toList());
+                this.price = items.stream()
+                        .filter(item -> item.getOrder().getIdx() == order.getIdx())
+                        .collect(Collectors.toList())
+                        .stream()
+                        .mapToInt(item -> item.getPrice())
+                        .sum();
+            }*/
+
+            @Getter
+            public static class ItemDTO {
+                private Long idx;
+                private String optionName;
+                private int quantity;
+                private int price;
+
+                public ItemDTO(Item item) {
+                    this.idx = item.getIdx();
+                    this.optionName = item.getOption().getOptionName();
+                    this.quantity = item.getQuantity();
+                    this.price = item.getPrice();
+                }
+            }
+        }
+    }
 }

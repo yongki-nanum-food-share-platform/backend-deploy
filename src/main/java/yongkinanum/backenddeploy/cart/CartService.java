@@ -35,6 +35,10 @@ public class CartService {
 
         Shop findShop = shopJPARepository.findByShopName(addDTOs.get(0).getShopName());
 
+        if(findShop == null) {
+            throw new Exception404("해당 가게를 찾을 수 없습니다.");
+        }
+
         addCartException(addDTOs);
 
         //이미 유저의 장바구니에 있느 옵션의 아이디들을 Set에 담음

@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 
 class CartRequest {
     @Getter
+    @Setter
     public static class AddDTO {
         private Long idx;
         private int quantity;
@@ -15,6 +16,7 @@ class CartRequest {
     }
 
     @Getter
+    @Setter
     public static class UpdateDTO {
         @NotNull
         private Long idx;

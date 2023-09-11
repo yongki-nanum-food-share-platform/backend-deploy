@@ -34,6 +34,13 @@ public class OrderController {
         return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }
 
+    @GetMapping("/cancel")
+    public ResponseEntity<?> findCancel(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        OrderResponse.FindCancelDTO findCancelDTO = orderService.findCancelOrder(userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(findCancelDTO));
+    }
+
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<?> delete(@PathVariable Long id, @AuthenticationPrincipal CustomUserDetails userDetails) {
         orderService.cancelOrder(id, userDetails.getUser());

@@ -28,6 +28,7 @@ public class OrderResponse {
             private String image;
             private String createAt;
             private String shopName;
+            private String orderName;
             private List<ItemDTO> items;
             private String status;
             private int price;
@@ -41,6 +42,7 @@ public class OrderResponse {
                 this.image = firstItem.getShop().getBrand().getImage();
                 this.createAt = firstItem.getCreateAt().toString();
                 this.shopName = firstItem.getShop().getShopName();
+                this.orderName = order.getOrderName();
                 this.items = items.stream()
                         .filter(item -> item.getOrder().getIdx() == order.getIdx())
                         .map(ItemDTO::new)
@@ -189,6 +191,7 @@ public class OrderResponse {
             private String image;
             private String createAt;
             private String shopName;
+            private String orderName;
             private List<ItemDTO> items;
             private String status;
             private int price;
@@ -202,6 +205,7 @@ public class OrderResponse {
                 this.image = firstItem.getShop().getBrand().getImage();
                 this.createAt = firstItem.getCreateAt().toString();
                 this.shopName = firstItem.getShop().getShopName();
+                this.orderName = order.getOrderName();
                 this.items = items.stream()
                         .filter(item -> item.getOrder().getIdx() == order.getIdx())
                         .map(ItemDTO::new)

@@ -1,6 +1,7 @@
 package yongkinanum.backenddeploy.order;
 
 import lombok.Getter;
+import yongkinanum.backenddeploy.core.error.exception.Exception404;
 import yongkinanum.backenddeploy.menu.Menu;
 import yongkinanum.backenddeploy.order.delivery.Delivery;
 import yongkinanum.backenddeploy.order.item.Item;
@@ -15,9 +16,9 @@ public class OrderResponse {
     public static class FindAllDTO {
         private List<OrderDTO> orders;
 
-        public FindAllDTO(List<Order> orders, List<Item> items) {
+        public FindAllDTO(List<Order> orders, List<Item> items, List<Delivery> deliveries) {
             this.orders = orders.stream()
-                    .map(order -> new OrderDTO(order, items))
+                    .map(order -> new OrderDTO(order, items, deliveries))
                     .collect(Collectors.toList());
         }
 
@@ -28,9 +29,10 @@ public class OrderResponse {
             private String createAt;
             private String shopName;
             private List<ItemDTO> items;
+            private String status;
             private int price;
 
-            public OrderDTO(Order order, List<Item> items) {
+            public OrderDTO(Order order, List<Item> items, List<Delivery> deliveries) {
                 this.idx = order.getIdx();
                 Item firstItem = items.stream()
                         .filter(item -> item.getOrder().getIdx() == order.getIdx())
@@ -43,10 +45,24 @@ public class OrderResponse {
                         .filter(item -> item.getOrder().getIdx() == order.getIdx())
                         .map(ItemDTO::new)
                         .collect(Collectors.toList());
+                this.status = getDeliveryStatus(order, deliveries);
                 this.price = items.stream()
                         .filter(item -> item.getOrder().getIdx() == order.getIdx())
                         .mapToInt(Item::getPrice)
                         .sum();
+            }
+
+            private String getDeliveryStatus(Order order, List<Delivery> deliveries) {
+                Delivery findDelivery = deliveries.stream()
+                        .filter(delivery -> delivery.getOrder().getIdx() == order.getIdx())
+                        .findFirst()
+                        .orElseThrow(() -> new Exception404("해당 배달을 찾을 수 없습니다."));
+
+                if(findDelivery.getStatus() == 'Y') {
+                    return "배달 완료";
+                }
+
+                return "배달 중";
             }
 
             /*public OrderDTO(Order order, List<Item> items) {
@@ -174,6 +190,7 @@ public class OrderResponse {
             private String createAt;
             private String shopName;
             private List<ItemDTO> items;
+            private String status;
             private int price;
 
             public OrderDTO(Order order, List<Item> items) {
@@ -189,6 +206,7 @@ public class OrderResponse {
                         .filter(item -> item.getOrder().getIdx() == order.getIdx())
                         .map(ItemDTO::new)
                         .collect(Collectors.toList());
+                this.status = "취소됨";
                 this.price = items.stream()
                         .filter(item -> item.getOrder().getIdx() == order.getIdx())
                         .mapToInt(Item::getPrice)

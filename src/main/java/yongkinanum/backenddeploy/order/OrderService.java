@@ -17,10 +17,7 @@ import yongkinanum.backenddeploy.shop.ShopJPARepository;
 import yongkinanum.backenddeploy.user.User;
 import yongkinanum.backenddeploy.user.UserJPARepository;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -119,7 +116,14 @@ public class OrderService {
 
         List<Item> items = itemJPARepository.findAllItemByUserIdx(findUser.getIdx());
 
-        return new OrderResponse.FindAllDTO(orders, items);
+        List<Delivery> deliveries = new ArrayList<>();
+
+        for(Order order : orders) {
+            Delivery delivery = deliveryJPARepository.findByOrderIdx(order.getIdx());
+            deliveries.add(delivery);
+        }
+
+        return new OrderResponse.FindAllDTO(orders, items, deliveries);
     }
 
     public OrderResponse.FindDTO findOrder(Long idx, User user) {

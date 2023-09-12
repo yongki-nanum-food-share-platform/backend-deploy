@@ -119,6 +119,7 @@ public class OrderResponse {
         private String createAt;
         private String address;
         private String status;
+        private int totalPrice;
         private List<MenuDTO> menus;
 
         public FindDTO(Order order, List<Item> items, Delivery delivery) {
@@ -127,6 +128,10 @@ public class OrderResponse {
             this.createAt = items.get(0).getCreateAt().toString();
             this.address = delivery.getAddress();
             this.status = getDeliveryStatus(delivery);
+            this.totalPrice = items.stream()
+                    .mapToInt(item -> item.getPrice())
+                    .sum();
+
             Map<String, List<Item>> itemsByProduct = items.stream()
                     .collect(Collectors.groupingBy(item -> item.getOption().getMenu().getMenuName()));
 

@@ -12,6 +12,7 @@ truncate table order_tb;
 truncate table item_tb;
 truncate table delivery_tb;
 truncate table address_tb;
+truncate table share_tb;
 SET REFERENTIAL_INTEGRITY TRUE;
 -- 모든 제약 조건 활성화
 
@@ -61,6 +62,8 @@ INSERT INTO order_tb (`idx`, `user_idx`, `cancel`, `order_name`) VALUES ('3', '3
 
 -- INIT 주문 아이템
 INSERT INTO item_tb (`idx`, `quantity`, `price`, `create_at`, `order_idx`, `option_idx`, `shop_idx`) VALUES ('1', '10', '190000', '2023-08-29 13:54:19.823', '1', '1', '1');
+INSERT INTO item_tb (`idx`, `quantity`, `price`, `create_at`, `order_idx`, `option_idx`, `shop_idx`) VALUES ('4', '10', '20000', '2023-08-29 13:54:19.823', '1', '5', '1');
+INSERT INTO item_tb (`idx`, `quantity`, `price`, `create_at`, `order_idx`, `option_idx`, `shop_idx`) VALUES ('5', '5', '95000', '2023-08-29 13:54:19.823', '1', '6', '1');
 INSERT INTO item_tb (`idx`, `quantity`, `price`, `create_at`, `order_idx`, `option_idx`, `shop_idx`) VALUES ('2', '1', '16000', '2023-08-29 13:54:19.823', '2', '2', '1');
 INSERT INTO item_tb (`idx`, `quantity`, `price`, `create_at`, `order_idx`, `option_idx`, `shop_idx`) VALUES ('3', '1', '16000', '2023-08-30 13:54:19.823', '3', '6', '1');
 
@@ -75,7 +78,10 @@ INSERT INTO review_tb (`idx`, `content`, `star_point`, `create_at`, `user_idx`, 
 INSERT INTO review_tb (`idx`, `content`, `star_point`, `create_at`, `user_idx`, `shop_idx`, `order_idx`, `delete`) VALUES ('3', '굽네 오리지널은 좀 물리면서도 굉장히 맛있습니다.', '5.0', '2023-08-29 13:54:19.823', '3', '1', '1', 'N');
 
 -- INIT POST
-INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`, `option_idx`) VALUES ('1', '테스트 포스트', '테스트 게시물입니다.', '17시', '연산동', '2', '2023-08-29 13:54:19.823', 'N', '3', '1', '1');
+INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`) VALUES ('1', '테스트 포스트', '테스트 게시물입니다.', '17시', '연산동', '2', '2023-08-29 13:54:19.823', 'N', '3', '1');
+
+INSERT INTO share_tb (`idx`, `quantity`, `post_idx`, `option_idx`) VALUES ('1', '5', '1', '1');
+INSERT INTO share_tb (`idx`, `quantity`, `post_idx`, `option_idx`) VALUES ('2', '1', '1', '6');
 
 INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('1', '5', '3', '1', '1');
 INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('2', '4', '3', '3', '1');

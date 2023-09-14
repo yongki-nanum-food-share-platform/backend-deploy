@@ -876,9 +876,51 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect2">
-<h3 id="_가게_조회">가게 조회</h3>
+<h3 id="_가게_리스트_조회">가게 리스트 조회</h3>
 <div class="sect3">
 <h4 id="_요청_예시_12">요청 예시</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /shops HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 24
+Host: localhost:8080
+
+{
+  "menuName" : "굽"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_응답_예시_12">응답 예시</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true,
+  "response" : {
+    "shops" : [ {
+      "idx" : 1,
+      "shopName" : "굽네치킨 부산안락점",
+      "description" : null,
+      "starCount" : 5.0
+    }, {
+      "idx" : 2,
+      "shopName" : "굽네치킨 부산연산점",
+      "description" : null,
+      "starCount" : 0.0
+    } ]
+  },
+  "error" : null
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_가게_조회">가게 조회</h3>
+<div class="sect3">
+<h4 id="_요청_예시_13">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /shops/1 HTTP/1.1
@@ -887,7 +929,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_12">응답 예시</h4>
+<h4 id="_응답_예시_13">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -900,6 +942,79 @@ Host: localhost:8080</code></pre>
     "starPoint" : 5.0,
     "orderCount" : 3,
     "reviewCount" : 3,
+    "menus" : [ {
+      "idx" : 3,
+      "menuName" : "굽네 오리지널",
+      "options" : [ {
+        "idx" : 11,
+        "optionName" : "뼈치킨",
+        "price" : 17000
+      }, {
+        "idx" : 12,
+        "optionName" : "순살치킨",
+        "price" : 19000
+      }, {
+        "idx" : 13,
+        "optionName" : "고블링 소스 추가",
+        "price" : 500
+      }, {
+        "idx" : 14,
+        "optionName" : "마블링 소스 추가",
+        "price" : 500
+      }, {
+        "idx" : 15,
+        "optionName" : "콜라 라지 변경",
+        "price" : 2000
+      } ]
+    }, {
+      "idx" : 2,
+      "menuName" : "볼케이노",
+      "options" : [ {
+        "idx" : 6,
+        "optionName" : "뼈치킨",
+        "price" : 19000
+      }, {
+        "idx" : 7,
+        "optionName" : "순살치킨",
+        "price" : 21000
+      }, {
+        "idx" : 8,
+        "optionName" : "고블링 소스 추가",
+        "price" : 500
+      }, {
+        "idx" : 9,
+        "optionName" : "마블링 소스 추가",
+        "price" : 500
+      }, {
+        "idx" : 10,
+        "optionName" : "콜라 라지 변경",
+        "price" : 2000
+      } ]
+    }, {
+      "idx" : 1,
+      "menuName" : "고추바사삭",
+      "options" : [ {
+        "idx" : 1,
+        "optionName" : "뼈치킨",
+        "price" : 19000
+      }, {
+        "idx" : 2,
+        "optionName" : "순살치킨",
+        "price" : 21000
+      }, {
+        "idx" : 3,
+        "optionName" : "고블링 소스 추가",
+        "price" : 500
+      }, {
+        "idx" : 4,
+        "optionName" : "마블링 소스 추가",
+        "price" : 500
+      }, {
+        "idx" : 5,
+        "optionName" : "콜라 라지 변경",
+        "price" : 2000
+      } ]
+    } ],
     "reviews" : [ {
       "idx" : 1,
       "content" : "고추바사삭 잘 먹었습니다.",
@@ -936,7 +1051,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_13">요청 예시</h4>
+<h4 id="_요청_예시_14">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /shops/update HTTP/1.1
@@ -954,7 +1069,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_13">응답 예시</h4>
+<h4 id="_응답_예시_14">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -976,7 +1091,7 @@ Host: localhost:8080
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_14">요청 예시</h4>
+<h4 id="_요청_예시_15">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /shops/unregist HTTP/1.1
@@ -991,7 +1106,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_14">응답 예시</h4>
+<h4 id="_응답_예시_15">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1018,7 +1133,7 @@ Host: localhost:8080
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_15">요청 예시</h4>
+<h4 id="_요청_예시_16">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /carts/add HTTP/1.1
@@ -1039,7 +1154,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_15">응답 예시</h4>
+<h4 id="_응답_예시_16">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1061,7 +1176,7 @@ Host: localhost:8080
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_16">요청 예시</h4>
+<h4 id="_요청_예시_17">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /carts HTTP/1.1
@@ -1070,7 +1185,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_16">응답 예시</h4>
+<h4 id="_응답_예시_17">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1083,7 +1198,7 @@ Host: localhost:8080</code></pre>
         "idx" : 1,
         "option" : {
           "idx" : 1,
-          "optionName" : "고추바사삭 뼈치킨",
+          "optionName" : "뼈치킨",
           "price" : 19000
         },
         "quantity" : 5,
@@ -1102,19 +1217,19 @@ Host: localhost:8080</code></pre>
         "option" : {
           "idx" : 4,
           "optionName" : "마블링 소스 추가",
-          "price" : 19000
+          "price" : 500
         },
         "quantity" : 3,
-        "price" : 57000
+        "price" : 1500
       } ]
     }, {
       "idx" : 2,
-      "menuName" : "볼게이노",
+      "menuName" : "볼케이노",
       "carts" : [ {
         "idx" : 4,
         "option" : {
           "idx" : 6,
-          "optionName" : "볼케이노 뼈치킨",
+          "optionName" : "뼈치킨",
           "price" : 19000
         },
         "quantity" : 2,
@@ -1123,14 +1238,14 @@ Host: localhost:8080</code></pre>
         "idx" : 5,
         "option" : {
           "idx" : 7,
-          "optionName" : "볼케이노 순살치킨",
+          "optionName" : "순살치킨",
           "price" : 21000
         },
         "quantity" : 1,
         "price" : 21000
       } ]
     } ],
-    "totalPrice" : 213000
+    "totalPrice" : 157500
   },
   "error" : null
 }</code></pre>
@@ -1148,7 +1263,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_17">요청 예시</h4>
+<h4 id="_요청_예시_18">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /carts/update HTTP/1.1
@@ -1167,7 +1282,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_17">응답 예시</h4>
+<h4 id="_응답_예시_18">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1189,7 +1304,7 @@ Host: localhost:8080
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_18">요청 예시</h4>
+<h4 id="_요청_예시_19">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /carts/clear HTTP/1.1
@@ -1198,7 +1313,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_18">응답 예시</h4>
+<h4 id="_응답_예시_19">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1225,7 +1340,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_19">요청 예시</h4>
+<h4 id="_요청_예시_20">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /orders/save HTTP/1.1
@@ -1234,7 +1349,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_19">응답 예시</h4>
+<h4 id="_응답_예시_20">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1256,7 +1371,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_20">요청 예시</h4>
+<h4 id="_요청_예시_21">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /orders HTTP/1.1
@@ -1265,7 +1380,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_20">응답 예시</h4>
+<h4 id="_응답_예시_21">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1279,7 +1394,7 @@ Host: localhost:8080</code></pre>
       "orderName" : "고추바사삭 외 0건",
       "items" : [ {
         "idx" : 1,
-        "optionName" : "고추바사삭 뼈치킨",
+        "optionName" : "뼈치킨",
         "quantity" : 10,
         "price" : 190000
       }, {
@@ -1289,7 +1404,7 @@ Host: localhost:8080</code></pre>
         "price" : 20000
       }, {
         "idx" : 5,
-        "optionName" : "볼케이노 뼈치킨",
+        "optionName" : "뼈치킨",
         "quantity" : 5,
         "price" : 95000
       } ],
@@ -1303,7 +1418,7 @@ Host: localhost:8080</code></pre>
       "orderName" : "볼케이노 외 0건",
       "items" : [ {
         "idx" : 3,
-        "optionName" : "볼케이노 뼈치킨",
+        "optionName" : "뼈치킨",
         "quantity" : 1,
         "price" : 16000
       } ],
@@ -1327,7 +1442,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_21">요청 예시</h4>
+<h4 id="_요청_예시_22">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /orders/1 HTTP/1.1
@@ -1336,7 +1451,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_21">응답 예시</h4>
+<h4 id="_응답_예시_22">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1350,10 +1465,10 @@ Host: localhost:8080</code></pre>
     "totalPrice" : 305000,
     "menus" : [ {
       "idx" : 2,
-      "menuName" : "볼게이노",
+      "menuName" : "볼케이노",
       "items" : [ {
         "idx" : 5,
-        "optionName" : "볼케이노 뼈치킨",
+        "optionName" : "뼈치킨",
         "quantity" : 5,
         "price" : 95000
       } ]
@@ -1362,7 +1477,7 @@ Host: localhost:8080</code></pre>
       "menuName" : "고추바사삭",
       "items" : [ {
         "idx" : 1,
-        "optionName" : "고추바사삭 뼈치킨",
+        "optionName" : "뼈치킨",
         "quantity" : 10,
         "price" : 190000
       }, {
@@ -1389,7 +1504,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_22">요청 예시</h4>
+<h4 id="_요청_예시_23">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /orders/cancel HTTP/1.1
@@ -1398,7 +1513,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_22">응답 예시</h4>
+<h4 id="_응답_예시_23">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1412,7 +1527,7 @@ Host: localhost:8080</code></pre>
       "orderName" : "고추바사삭 외 0건",
       "items" : [ {
         "idx" : 2,
-        "optionName" : "고추바사삭 순살치킨",
+        "optionName" : "순살치킨",
         "quantity" : 1,
         "price" : 16000
       } ],
@@ -1436,7 +1551,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_23">요청 예시</h4>
+<h4 id="_요청_예시_24">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /orders/1/delete HTTP/1.1
@@ -1445,7 +1560,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_23">응답 예시</h4>
+<h4 id="_응답_예시_24">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1475,7 +1590,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_24">요청 예시</h4>
+<h4 id="_요청_예시_25">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /posts/write HTTP/1.1
@@ -1502,7 +1617,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_24">응답 예시</h4>
+<h4 id="_응답_예시_25">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1524,7 +1639,7 @@ Host: localhost:8080
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_25">요청 예시</h4>
+<h4 id="_요청_예시_26">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /posts HTTP/1.1
@@ -1533,7 +1648,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_25">응답 예시</h4>
+<h4 id="_응답_예시_26">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1564,7 +1679,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_26">요청 예시</h4>
+<h4 id="_요청_예시_27">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /posts/1 HTTP/1.1
@@ -1573,7 +1688,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_26">응답 예시</h4>
+<h4 id="_응답_예시_27">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1591,11 +1706,11 @@ Host: localhost:8080</code></pre>
     "shares" : [ {
       "idx" : 1,
       "quantity" : 5,
-      "optionName" : "고추바사삭 뼈치킨"
+      "optionName" : "뼈치킨"
     }, {
       "idx" : 2,
       "quantity" : 1,
-      "optionName" : "볼케이노 뼈치킨"
+      "optionName" : "뼈치킨"
     } ],
     "shopName" : "굽네치킨 부산안락점",
     "image" : "/images/1.jpg",
@@ -1620,7 +1735,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_27">요청 예시</h4>
+<h4 id="_요청_예시_28">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /posts/1/update HTTP/1.1
@@ -1639,7 +1754,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_27">응답 예시</h4>
+<h4 id="_응답_예시_28">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1661,7 +1776,7 @@ Host: localhost:8080
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_28">요청 예시</h4>
+<h4 id="_요청_예시_29">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /posts/1/delete HTTP/1.1
@@ -1670,7 +1785,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_28">응답 예시</h4>
+<h4 id="_응답_예시_29">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1697,7 +1812,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_29">요청 예시</h4>
+<h4 id="_요청_예시_30">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /reviews/write HTTP/1.1
@@ -1714,7 +1829,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_29">응답 예시</h4>
+<h4 id="_응답_예시_30">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1736,7 +1851,7 @@ Host: localhost:8080
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_30">요청 예시</h4>
+<h4 id="_요청_예시_31">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /reviews HTTP/1.1
@@ -1745,7 +1860,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_30">응답 예시</h4>
+<h4 id="_응답_예시_31">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1790,7 +1905,7 @@ Host: localhost:8080</code></pre>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_31">요청 예시</h4>
+<h4 id="_요청_예시_32">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /reviews/1/update HTTP/1.1
@@ -1805,7 +1920,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_31">응답 예시</h4>
+<h4 id="_응답_예시_32">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1827,7 +1942,7 @@ Host: localhost:8080
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_요청_예시_32">요청 예시</h4>
+<h4 id="_요청_예시_33">요청 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /reviews/1/delete HTTP/1.1
@@ -1836,7 +1951,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_응답_예시_32">응답 예시</h4>
+<h4 id="_응답_예시_33">응답 예시</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1854,7 +1969,7 @@ Host: localhost:8080</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-09-14 18:29:31 +0900
+Last updated 2023-09-14 20:16:10 +0900
 </div>
 </div>
 </body>

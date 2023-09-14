@@ -76,11 +76,11 @@ public class ReviewService {
     }
 
     @Transactional
-    public void updateReview(ReviewRequest.UpdateDTO updateDTO, User user) {
+    public void updateReview(Long idx, ReviewRequest.UpdateDTO updateDTO, User user) {
         User findUser = userJPARepository.findByUserId(user.getUserId());
         findUser.findUserNullCheck(findUser);
 
-        Review findReview = reviewJPARepository.findById(updateDTO.getIdx()).orElseThrow(
+        Review findReview = reviewJPARepository.findById(idx).orElseThrow(
                 () -> new Exception404("해당 리뷰를 찾을 수 없습니다.")
         );
 

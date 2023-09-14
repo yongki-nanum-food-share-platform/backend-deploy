@@ -22,7 +22,7 @@ public class ShopController {
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<?> findAll(@RequestBody ShopRequest.FindAllDTO findAllDTO) {
         ShopResponse.FindAllDTO findResponseDTO = shopService.findAllShops(findAllDTO);
 

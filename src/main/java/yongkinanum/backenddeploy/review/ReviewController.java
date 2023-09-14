@@ -27,9 +27,9 @@ public class ReviewController {
         return ResponseEntity.ok().body(ApiUtils.success(findAllDTO));
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestBody ReviewRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        reviewService.updateReview(updateDTO, userDetails.getUser());
+    @PutMapping("/{id}/update")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody ReviewRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        reviewService.updateReview(id, updateDTO, userDetails.getUser());
 
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }

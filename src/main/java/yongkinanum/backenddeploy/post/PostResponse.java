@@ -1,6 +1,7 @@
 package yongkinanum.backenddeploy.post;
 
 import lombok.Getter;
+import yongkinanum.backenddeploy.post.share.Share;
 import yongkinanum.backenddeploy.shop.Shop;
 import yongkinanum.backenddeploy.user.UserResponse;
 
@@ -46,11 +47,13 @@ public class PostResponse {
         private String time;
         private String place;
         private String people;
+        private String menuName;
+        private List<ShareDTO> shares;
         private String shopName;
         private String image;
         private int tip;
 
-        public FindDTO(Post post) {
+        public FindDTO(Post post, List<Share> shares) {
             this.idx = post.getIdx();
             this.title = post.getTitle();
             this.content = post.getContent();
@@ -59,9 +62,26 @@ public class PostResponse {
             this.time = post.getTime();
             this.place = post.getPlace();
             this.people = post.getPeople();
+            this.menuName = shares.get(0).getOption().getMenu().getMenuName();
+            this.shares = shares.stream()
+                    .map(ShareDTO::new)
+                    .collect(Collectors.toList());
             this.shopName = post.getShop().getShopName();
             this.image = post.getShop().getBrand().getImage();
             this.tip = post.getShop().getTip();
+        }
+
+        @Getter
+        public static class ShareDTO {
+            private Long idx;
+            private int quantity;
+            private String optionName;
+
+            public ShareDTO(Share share) {
+                this.idx = share.getIdx();
+                this.quantity = share.getQuantity();
+                this.optionName = share.getOption().getOptionName();
+            }
         }
     }
 }

@@ -40,6 +40,12 @@ class ShopRequest {
 
     @Getter
     @Setter
+    public static class FindAllDTO {
+        private String menuName;
+    }
+
+    @Getter
+    @Setter
     public static class UpdateDTO {
         @NotBlank
         private Long idx;

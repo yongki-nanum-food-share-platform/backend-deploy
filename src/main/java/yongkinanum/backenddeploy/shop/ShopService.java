@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yongkinanum.backenddeploy.core.error.exception.Exception403;
 import yongkinanum.backenddeploy.core.error.exception.Exception404;
+import yongkinanum.backenddeploy.menu.Menu;
+import yongkinanum.backenddeploy.menu.MenuJPARepository;
+import yongkinanum.backenddeploy.menu.option.Option;
+import yongkinanum.backenddeploy.menu.option.OptionJPARepository;
 import yongkinanum.backenddeploy.shop.brand.Brand;
 import yongkinanum.backenddeploy.shop.brand.BrandJPARepository;
 import yongkinanum.backenddeploy.review.Review;
@@ -19,6 +23,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class ShopService {
     private final ShopJPARepository shopJPARepository;
+    private final OptionJPARepository optionJPARepository;
     private final UserJPARepository userJPARepository;
     private final BrandJPARepository brandJPARepository;
     private final ReviewJPARepository reviewJPARepository;
@@ -33,11 +38,11 @@ public class ShopService {
         shopJPARepository.save(shop);
     }
 
-    // 가게 리스트 조회 시 나열할 메서드 작성
-    //
-    //
-    //
-    //////////////////////////////
+    public ShopResponse.FindAllDTO findAllShops(ShopRequest.FindAllDTO findAllDTO) {
+        List<Shop> findShops = shopJPARepository.findAllShopByBrandName(findAllDTO.getMenuName());
+
+        return new ShopResponse.FindAllDTO(findShops);
+    }
 
     public ShopResponse.FindDTO findShop(Long idx) {
         Shop findShop = shopJPARepository.findById(idx).orElseThrow(
@@ -45,9 +50,11 @@ public class ShopService {
         );
         checkUnregistShop(findShop);
 
-        List<Review> reviews =  reviewJPARepository.findByShopId(idx);
+        List<Option> findOptions = optionJPARepository.findAllOptionByBrandIdx(findShop.getBrand().getIdx());
 
-        return new ShopResponse.FindDTO(reviews, findShop);
+        List<Review> findReviews =  reviewJPARepository.findByShopId(idx);
+
+        return new ShopResponse.FindDTO(findReviews, findOptions, findShop);
     }
 
     @Transactional

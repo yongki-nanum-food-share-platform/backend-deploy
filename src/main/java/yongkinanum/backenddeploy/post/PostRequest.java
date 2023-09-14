@@ -1,33 +1,23 @@
 package yongkinanum.backenddeploy.post;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
+import java.util.List;
 
 class PostRequest {
     @Getter
+    @Setter
     public static class WriteDTO {
-        @NotBlank
         private String title;
-
-        @NotBlank
         private String content;
-
-        @NotBlank
-        private String option;
-
-        @NotBlank
+        private List<OptionDTO> options;
         private String time;
-
-        @NotBlank
         private String place;
-
-        @NotBlank
         private String people;
-
-        @NotBlank
-        private String shop;
+        private Long idx;
 
         public Post toEntity() {
             return Post.builder()
@@ -40,13 +30,18 @@ class PostRequest {
                     .delete('N')
                     .build();
         }
+
+        @Getter
+        @Setter
+        public static class OptionDTO {
+            private Long idx;
+            private int quantity;
+        }
     }
 
     @Getter
+    @Setter
     public static class UpdateDTO {
-        @NotBlank
-        private String idx;
-
         @NotBlank
         private String title;
 
@@ -61,11 +56,5 @@ class PostRequest {
 
         @NotBlank
         private String people;
-    }
-
-    @Getter
-    public static class DeleteDTO {
-        @NotBlank
-        private String idx;
     }
 }

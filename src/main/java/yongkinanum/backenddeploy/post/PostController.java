@@ -3,6 +3,7 @@ package yongkinanum.backenddeploy.post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import yongkinanum.backenddeploy.core.security.CustomUserDetails;
 import yongkinanum.backenddeploy.core.utils.ApiUtils;
@@ -36,16 +37,16 @@ public class PostController {
         return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestBody @Valid PostRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        postService.updatePost(updateDTO, userDetails.getUser());
+    @PutMapping("/{id}/update")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid PostRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        postService.updatePost(id, updateDTO, userDetails.getUser());
 
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> delete(@RequestBody @Valid PostRequest.DeleteDTO deleteDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        postService.deletePost(Long.parseLong(deleteDTO.getIdx()), userDetails.getUser());
+    @DeleteMapping("/{id}/delete")
+    public ResponseEntity<?> delete(@PathVariable Long id, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        postService.deletePost(id, userDetails.getUser());
 
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }

@@ -1,9 +1,11 @@
 package yongkinanum.backenddeploy.review;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class ReviewRequest {
     @Getter
+    @Setter
     public static class WriteDTO {
         private Long idx;
         private String content;
@@ -11,8 +13,8 @@ public class ReviewRequest {
     }
 
     @Getter
+    @Setter
     public static class UpdateDTO {
-        private Long idx;
         private String content;
     }
 }

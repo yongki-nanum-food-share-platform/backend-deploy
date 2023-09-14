@@ -30,6 +30,7 @@ INSERT INTO brand_tb (`idx`, `brand_name`, `image`) VALUES ('1', '굽네치킨',
 
 -- INIT 가게
 INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`) VALUES ('1', '굽네치킨 부산안락점', '부산광역시 동래구 안락동', '5.0', '3', '3', 'N', '3000', '2', '1');
+INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`) VALUES ('2', '굽네치킨 부산연산점', '부산광역시 연제구 연산동', '0.0', '0', '0', 'N', '3000', '2', '1');
 
 -- INIT 메뉴
 INSERT INTO menu_tb (`idx`, `menu_name`, `description`, `brand_idx`) VALUES ('1', '고추바사삭', '고추를 잘개 부수어 토핑하고 오븐에 갓 구워낸 바삭함 지존의 고추바사삭', '1');

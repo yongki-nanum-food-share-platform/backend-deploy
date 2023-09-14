@@ -11,7 +11,8 @@ import java.util.Date;
 @Entity
 @Table(name = "post_tb",
         indexes = {
-                @Index(name = "post_user_idx", columnList = "user_idx")
+                @Index(name = "post_user_idx", columnList = "user_idx"),
+                @Index(name = "post_shop_idx", columnList = "shop_idx")
         })
 @Getter
 @Setter
@@ -48,11 +49,8 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     private Shop shop;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Option option;
-
     @Builder
-    public Post(Long idx, String title, String content, String time, String place, String people, Date createAt, Character delete, User user, Shop shop, Option option) {
+    public Post(Long idx, String title, String content, String time, String place, String people, Date createAt, Character delete, User user, Shop shop) {
         this.idx = idx;
         this.title = title;
         this.content = content;
@@ -63,6 +61,5 @@ public class Post {
         this.delete = delete;
         this.user = user;
         this.shop = shop;
-        this.option = option;
     }
 }

@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yongkinanum.backenddeploy.core.error.exception.Exception403;
 import yongkinanum.backenddeploy.core.error.exception.Exception404;
-import yongkinanum.backenddeploy.menu.Menu;
-import yongkinanum.backenddeploy.menu.MenuJPARepository;
 import yongkinanum.backenddeploy.menu.option.Option;
 import yongkinanum.backenddeploy.menu.option.OptionJPARepository;
 import yongkinanum.backenddeploy.shop.brand.Brand;

@@ -7,11 +7,14 @@ import yongkinanum.backenddeploy.core.error.exception.Exception403;
 import yongkinanum.backenddeploy.core.error.exception.Exception404;
 import yongkinanum.backenddeploy.menu.option.Option;
 import yongkinanum.backenddeploy.menu.option.OptionJPARepository;
+import yongkinanum.backenddeploy.post.share.Share;
+import yongkinanum.backenddeploy.post.share.ShareJPARepository;
 import yongkinanum.backenddeploy.shop.Shop;
 import yongkinanum.backenddeploy.shop.ShopJPARepository;
 import yongkinanum.backenddeploy.user.User;
 import yongkinanum.backenddeploy.user.UserJPARepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,19 +22,18 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class PostService {
     private final PostJPARepository postJPARepository;
+    private final ShareJPARepository shareJPARepository;
     private final UserJPARepository userJPARepository;
     private final ShopJPARepository shopJPARepository;
     private final OptionJPARepository optionJPARepository;
 
     @Transactional
     public void writePost(PostRequest.WriteDTO writeDTO, User user) {
-        Shop findShop = shopJPARepository.findById(Long.parseLong(writeDTO.getShop())).orElseThrow(
+        Shop findShop = shopJPARepository.findById(writeDTO.getIdx()).orElseThrow(
                 () -> new Exception404("해당 가게를 찾을 수 없습니다.")
         );
 
-        Option findOption = optionJPARepository.findById(Long.parseLong(writeDTO.getOption())).orElseThrow(
-                () -> new Exception404("해당 옵션을 찾을 수 없습니다.")
-        );
+        List<PostRequest.WriteDTO.OptionDTO> optionDTOs = writeDTO.getOptions();
 
         User findUser = userJPARepository.findByUserId(user.getUserId());
 
@@ -41,9 +43,23 @@ public class PostService {
         post.setShop(findShop);
 
         post.setUser(findUser);
-        post.setOption(findOption);
 
         postJPARepository.save(post);
+
+        List<Share> shares = new ArrayList<>();
+
+        for(PostRequest.WriteDTO.OptionDTO optionDTO : optionDTOs) {
+            Option findOption = optionJPARepository.findByOptionId(optionDTO.getIdx());
+            Share newShare = Share.builder()
+                    .post(post)
+                    .quantity(optionDTO.getQuantity())
+                    .option(findOption)
+                    .build();
+
+            shares.add(newShare);
+        }
+
+        shareJPARepository.saveAll(shares);
     }
 
     public PostResponse.FindAllDTO findAllPost() {
@@ -57,16 +73,18 @@ public class PostService {
                 () -> new Exception404("해당 게시물을 찾을 수 없습니다.")
         );
 
+        List<Share> findShares = shareJPARepository.findAllShareByPostIdx(findPost.getIdx());
+
         if(findPost.getDelete() == 'Y') {
             throw new Exception404("해당 게시물은 삭제되었습니다.");
         }
 
-        return new PostResponse.FindDTO(findPost);
+        return new PostResponse.FindDTO(findPost, findShares);
     }
 
     @Transactional
-    public void updatePost(PostRequest.UpdateDTO updateDTO, User user) {
-        Post findPost = postJPARepository.findById(Long.parseLong(updateDTO.getIdx())).orElseThrow(
+    public void updatePost(Long idx, PostRequest.UpdateDTO updateDTO, User user) {
+        Post findPost = postJPARepository.findById(idx).orElseThrow(
                 () -> new Exception404("해당 게시물을 찾을 수 없습니다.")
         );
 

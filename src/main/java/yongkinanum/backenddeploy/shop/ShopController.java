@@ -22,6 +22,13 @@ public class ShopController {
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
+    @GetMapping
+    public ResponseEntity<?> findAll(@RequestBody ShopRequest.FindAllDTO findAllDTO) {
+        ShopResponse.FindAllDTO findResponseDTO = shopService.findAllShops(findAllDTO);
+
+        return ResponseEntity.ok().body(ApiUtils.success(findResponseDTO));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
          ShopResponse.FindDTO findDTO = shopService.findShop(id);

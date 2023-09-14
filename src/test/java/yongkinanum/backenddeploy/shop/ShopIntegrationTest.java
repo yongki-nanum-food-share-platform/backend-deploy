@@ -77,6 +77,32 @@ public class ShopIntegrationTest extends MyRestDoc {
     }
 
     @Test
+    @DisplayName("가게 리스트 조회 테스트")
+    @WithUserDetails("alstjr12")
+    void find_all_shop_test() throws Exception {
+        //given
+        ShopRequest.FindAllDTO findAllDTO = new ShopRequest.FindAllDTO();
+        findAllDTO.setMenuName("굽");
+
+        String requestBody = om.writeValueAsString(findAllDTO);
+
+        //when
+        ResultActions resultActions = mvc.perform(
+                post("/shops")
+                        .content(requestBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+        );
+
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println("테스트 : " + responseBody);
+
+        //then
+        resultActions.andExpect(jsonPath("$.success").value("true"))
+                .andDo(print())
+                .andDo(document);
+    }
+
+    @Test
     @DisplayName("가게 수정 테스트")
     @WithUserDetails(value = "alstjr1999")
     void update_shop_info_test() throws Exception {

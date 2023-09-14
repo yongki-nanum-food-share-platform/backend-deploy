@@ -34,26 +34,26 @@ INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_c
 
 -- INIT 메뉴
 INSERT INTO menu_tb (`idx`, `menu_name`, `description`, `brand_idx`) VALUES ('1', '고추바사삭', '고추를 잘개 부수어 토핑하고 오븐에 갓 구워낸 바삭함 지존의 고추바사삭', '1');
-INSERT INTO menu_tb (`idx`, `menu_name`, `description`, `brand_idx`) VALUES ('2', '볼게이노', '지금까지 이런 맛은 없었다. 불닭과 오븐 구이의 만남! 볼케이노', '1');
+INSERT INTO menu_tb (`idx`, `menu_name`, `description`, `brand_idx`) VALUES ('2', '볼케이노', '지금까지 이런 맛은 없었다. 불닭과 오븐 구이의 만남! 볼케이노', '1');
 INSERT INTO menu_tb (`idx`, `menu_name`, `description`, `brand_idx`) VALUES ('3', '굽네 오리지널', '여태까지의 오븐 치킨은 저리 가라! 굽네만의 스페셜 오븐 구이! 굽네 오리지널', '1');
 
 -- INIT 옵션
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('1', '고추바사삭 뼈치킨', '19000', '1');
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('2', '고추바사삭 순살치킨', '21000', '1');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('1', '뼈치킨', '19000', '1');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('2', '순살치킨', '21000', '1');
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('3', '고블링 소스 추가', '500', '1');
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('4', '마블링 소스 추가', '19000', '1');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('4', '마블링 소스 추가', '500', '1');
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('5', '콜라 라지 변경', '2000', '1');
 
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('6', '볼케이노 뼈치킨', '19000', '2');
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('7', '볼케이노 순살치킨', '21000', '2');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('6', '뼈치킨', '19000', '2');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('7', '순살치킨', '21000', '2');
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('8', '고블링 소스 추가', '500', '2');
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('9', '마블링 소스 추가', '19000', '2');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('9', '마블링 소스 추가', '500', '2');
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('10', '콜라 라지 변경', '2000', '2');
 
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('11', '굽네 오리지널 뼈치킨', '17000', '3');
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('12', '굽네 오리지널 순살치킨', '19000', '3');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('11', '뼈치킨', '17000', '3');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('12', '순살치킨', '19000', '3');
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('13', '고블링 소스 추가', '500', '3');
-INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('14', '마블링 소스 추가', '19000', '3');
+INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('14', '마블링 소스 추가', '500', '3');
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('15', '콜라 라지 변경', '2000', '3');
 
 -- INIT 주문

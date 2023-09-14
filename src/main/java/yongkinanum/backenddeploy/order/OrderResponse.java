@@ -132,10 +132,10 @@ public class OrderResponse {
                     .mapToInt(item -> item.getPrice())
                     .sum();
 
-            Map<String, List<Item>> itemsByProduct = items.stream()
+            Map<String, List<Item>> OptionsByMenu = items.stream()
                     .collect(Collectors.groupingBy(item -> item.getOption().getMenu().getMenuName()));
 
-            this.menus = itemsByProduct.entrySet().stream()
+            this.menus = OptionsByMenu.entrySet().stream()
                     .map(entry -> new MenuDTO(entry.getValue()))
                     .collect(Collectors.toList());
 

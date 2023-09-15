@@ -41,6 +41,12 @@ class PostRequest {
 
     @Getter
     @Setter
+    public static class FindSpecificDTO {
+        private String title;
+    }
+
+    @Getter
+    @Setter
     public static class UpdateDTO {
         @NotBlank
         private String title;

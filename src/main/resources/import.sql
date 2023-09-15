@@ -13,6 +13,7 @@ truncate table item_tb;
 truncate table delivery_tb;
 truncate table address_tb;
 truncate table share_tb;
+truncate table notice_tb;
 SET REFERENTIAL_INTEGRITY TRUE;
 -- 모든 제약 조건 활성화
 
@@ -81,12 +82,27 @@ INSERT INTO review_tb (`idx`, `content`, `star_point`, `create_at`, `user_idx`, 
 
 -- INIT POST
 INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`) VALUES ('1', '테스트 포스트', '테스트 게시물입니다.', '17시', '연산동', '2', '2023-08-29 13:54:19.823', 'N', '3', '1');
+INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`) VALUES ('2', '굽네치킨 드실분!!', '테스트 게시물입니다.', '17시', '연산동', '2', '2023-08-29 13:54:19.823', 'N', '3', '1');
 
 INSERT INTO share_tb (`idx`, `quantity`, `post_idx`, `option_idx`) VALUES ('1', '5', '1', '1');
 INSERT INTO share_tb (`idx`, `quantity`, `post_idx`, `option_idx`) VALUES ('2', '1', '1', '6');
+INSERT INTO share_tb (`idx`, `quantity`, `post_idx`, `option_idx`) VALUES ('3', '5', '2', '1');
+INSERT INTO share_tb (`idx`, `quantity`, `post_idx`, `option_idx`) VALUES ('4', '1', '2', '6');
 
 INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('1', '5', '3', '1', '1');
 INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('2', '4', '3', '3', '1');
 INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('3', '3', '3', '4', '1');
 INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('4', '2', '3', '6', '1');
 INSERT INTO cart_tb (`idx`, `quantity`, `user_idx`, `option_idx`, `shop_idx`) VALUES ('5', '1', '3', '7', '1');
+
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('1', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('2', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('3', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('4', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('5', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('6', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('7', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('8', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('9', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('10', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('11', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);

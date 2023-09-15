@@ -63,9 +63,10 @@ public class PostService {
     }
 
     public PostResponse.FindAllDTO findAllPost() {
-        List<Post> posts = postJPARepository.findAll();
+        List<Post> findPosts = postJPARepository.findAll();
+        List<Share> findShares = shareJPARepository.findAll();
 
-        return new PostResponse.FindAllDTO(posts);
+        return new PostResponse.FindAllDTO(findPosts, findShares);
     }
 
     public PostResponse.FindDTO findPost(Long idx) {

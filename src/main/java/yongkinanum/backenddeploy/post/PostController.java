@@ -37,6 +37,13 @@ public class PostController {
         return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<?> findSpecific(@RequestBody PostRequest.FindSpecificDTO findSpecificDTO) {
+        PostResponse.FindSpecificDTO findDTO = postService.findSpecificPosts(findSpecificDTO);
+
+        return ResponseEntity.ok().body(ApiUtils.success(findDTO));
+    }
+
     @PutMapping("/{id}/update")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid PostRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
         postService.updatePost(id, updateDTO, userDetails.getUser());

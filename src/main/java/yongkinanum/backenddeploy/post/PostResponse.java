@@ -13,8 +13,10 @@ public class PostResponse {
     public static class FindAllDTO {
         List<PostDTO> posts;
 
-        public FindAllDTO(List<Post> posts) {
-            this.posts = posts.stream().map(PostDTO::new).collect(Collectors.toList());
+        public FindAllDTO(List<Post> posts, List<Share> shares) {
+            this.posts = posts.stream()
+                    .map(post -> new PostDTO(post, shares))
+                    .collect(Collectors.toList());
         }
 
         @Getter
@@ -24,15 +26,25 @@ public class PostResponse {
             private String title;
             private String time;
             private String place;
+            private String menuName;
             private String people;
 
-            public PostDTO(Post post) {
+            public PostDTO(Post post, List<Share> shares) {
                 this.idx = post.getIdx();
                 this.image = post.getShop().getBrand().getImage();
                 this.title = post.getTitle();
                 this.time = post.getTime();
                 this.place = post.getPlace();
+                this.menuName = getSelectMenuName(post, shares);
                 this.people = post.getPeople();
+            }
+
+            private String getSelectMenuName(Post post, List<Share> shares) {
+                List<Share> findShares = shares.stream()
+                        .filter(share -> share.getPost().getIdx() == post.getIdx())
+                        .collect(Collectors.toList());
+
+                return String.format("%s 외 %d건", findShares.get(0).getOption().getMenu().getMenuName(), findShares.size() - 1);
             }
         }
     }

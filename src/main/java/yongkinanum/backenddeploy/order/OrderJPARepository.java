@@ -14,6 +14,6 @@ public interface OrderJPARepository extends JpaRepository<Order, Long> {
     @Query("select o from Order o where o.user.idx = :idx and o.cancel = 'Y'")
     List<Order> findCancelOrderByUserIdx(@Param("idx") Long idx);
 
-    @Query("select o from Order o where o.idx = :idx and o.cancel = 'N'")
+    @Query("select o from Order o where o.idx = :idx")
     Optional<Order> findById(@Param("idx") Long idx);
 }

@@ -29,8 +29,8 @@ INSERT INTO address_tb (`idx`, `address`, `user_idx`) VALUES ('1', '연산동', 
 INSERT INTO brand_tb (`idx`, `brand_name`, `image`) VALUES ('1', '굽네치킨', '/images/1.jpg');
 
 -- INIT 가게
-INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`) VALUES ('1', '굽네치킨 부산안락점', '부산광역시 동래구 안락동', '5.0', '3', '3', 'N', '3000', '2', '1');
-INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`) VALUES ('2', '굽네치킨 부산연산점', '부산광역시 연제구 연산동', '0.0', '0', '0', 'N', '3000', '2', '1');
+INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`, `description`) VALUES ('1', '굽네치킨 부산안락점', '부산광역시 동래구 안락동', '5.0', '3', '3', 'N', '3000', '2', '1', '굽네치킨 원조 부산 안락점입니다.');
+INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`, `description`) VALUES ('2', '굽네치킨 부산연산점', '부산광역시 연제구 연산동', '0.0', '0', '0', 'N', '3000', '2', '1', '안녕하세요. 맛있게 드시고 가세요.');
 
 -- INIT 메뉴
 INSERT INTO menu_tb (`idx`, `menu_name`, `description`, `brand_idx`) VALUES ('1', '고추바사삭', '고추를 잘개 부수어 토핑하고 오븐에 갓 구워낸 바삭함 지존의 고추바사삭', '1');
@@ -57,7 +57,7 @@ INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('14', 
 INSERT INTO option_tb (`idx`, `option_name`, `price`, `menu_idx`) VALUES ('15', '콜라 라지 변경', '2000', '3');
 
 -- INIT 주문
-INSERT INTO order_tb (`idx`, `user_idx`, `cancel`, `order_name`) VALUES ('1', '3', 'N', '고추바사삭 외 0건');
+INSERT INTO order_tb (`idx`, `user_idx`, `cancel`, `order_name`) VALUES ('1', '3', 'N', '고추바사삭 외 2건');
 INSERT INTO order_tb (`idx`, `user_idx`, `cancel`, `order_name`) VALUES ('2', '3', 'Y', '고추바사삭 외 0건');
 INSERT INTO order_tb (`idx`, `user_idx`, `cancel`, `order_name`) VALUES ('3', '3', 'N', '볼케이노 외 0건');
 
@@ -71,6 +71,7 @@ INSERT INTO item_tb (`idx`, `quantity`, `price`, `create_at`, `order_idx`, `opti
 
 -- INIT 배달
 INSERT INTO delivery_tb (`idx`, `address`, `status`, `order_idx`, `user_idx`) VALUES ('1', '연산동', 'Y', '1', '3');
+INSERT INTO delivery_tb (`idx`, `address`, `status`, `order_idx`, `user_idx`) VALUES ('3', '연산동', 'N', '2', '3');
 INSERT INTO delivery_tb (`idx`, `address`, `status`, `order_idx`, `user_idx`) VALUES ('2', '연산동', 'N', '3', '3');
 
 -- INIT 리뷰

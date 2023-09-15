@@ -116,6 +116,32 @@ class PostIntegrationTest extends MyRestDoc {
     }
 
     @Test
+    @DisplayName("게시물 검색 테스트")
+    @WithUserDetails("alstjr12")
+    void search_post_test() throws Exception {
+        //given
+        PostRequest.FindSpecificDTO findSpecificDTO = new PostRequest.FindSpecificDTO();
+        findSpecificDTO.setTitle("치킨");
+
+        String requestBody = om.writeValueAsString(findSpecificDTO);
+
+        //when
+        ResultActions resultActions = mvc.perform(
+                get("/posts/search")
+                        .content(requestBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+        );
+
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println("테스트 : " + responseBody);
+
+        //then
+        resultActions.andExpect(jsonPath("$.success").value("true"))
+                .andDo(print())
+                .andDo(document);
+    }
+
+    @Test
     @DisplayName("게시물 수정 테스트")
     @WithUserDetails("alstjr12")
     void update_post_test() throws Exception {

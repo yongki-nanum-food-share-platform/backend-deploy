@@ -83,6 +83,13 @@ public class PostService {
         return new PostResponse.FindDTO(findPost, findShares);
     }
 
+    public PostResponse.FindSpecificDTO findSpecificPosts(PostRequest.FindSpecificDTO findSpecificDTO) {
+        List<Post> findPosts = postJPARepository.findPostByTitle(findSpecificDTO.getTitle());
+        List<Share> findShares = shareJPARepository.findAll();
+
+        return new PostResponse.FindSpecificDTO(findPosts, findShares);
+    }
+
     @Transactional
     public void updatePost(Long idx, PostRequest.UpdateDTO updateDTO, User user) {
         Post findPost = postJPARepository.findById(idx).orElseThrow(

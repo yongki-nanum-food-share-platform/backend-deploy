@@ -61,6 +61,7 @@ public class PostResponse {
         private String people;
         private String menuName;
         private List<ShareDTO> shares;
+        private Long shopIdx;
         private String shopName;
         private String image;
         private int tip;
@@ -78,6 +79,7 @@ public class PostResponse {
             this.shares = shares.stream()
                     .map(ShareDTO::new)
                     .collect(Collectors.toList());
+            this.shopIdx = post.getShop().getIdx();
             this.shopName = post.getShop().getShopName();
             this.image = post.getShop().getBrand().getImage();
             this.tip = post.getShop().getTip();

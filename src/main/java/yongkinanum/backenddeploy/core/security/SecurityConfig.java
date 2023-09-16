@@ -3,7 +3,9 @@ package yongkinanum.backenddeploy.core.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +18,8 @@ import yongkinanum.backenddeploy.core.error.exception.Exception403;
 import yongkinanum.backenddeploy.core.utils.FilterResponseUtils;
 
 @Configuration
+@EnableWebSecurity // 스프링 시큐리티 필터가 스프링 필터 체인에 등록!
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // Controller 에서 권한 설정을 위한 어노테이션!
 public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -61,16 +65,27 @@ public class SecurityConfig {
 
         // 11. 인증, 권한 필터 설정
         http.authorizeRequests(
-                authorize -> authorize
-                        .antMatchers(
-                                "/users", "/users/update", "/users/unregist",
-                                "/carts/**",
-                                "/posts/**",
-                                "/shops/{id:\\d+}")
-                        .authenticated()
-                        //권한 허용 테스트
-                        .antMatchers("/shops/regist", "/shops/update", "/shops/unregist")
-                        .hasAuthority("SHOPPER")
+                authorize -> {
+                    try {
+                        authorize
+                                .antMatchers(
+                                        "/users/**",
+                                        "/carts/**",
+                                        "/posts/**",
+                                        "/shops", "/shops/{id:\\d+}",
+                                        "/orders",
+                                        "/reviews",
+                                        "/notices/**")
+                                .authenticated()
+                                //권한 허용 테스트
+                                .antMatchers("/shops/regist", "/shops/update", "/shops/unregist")
+                                .hasAuthority("SHOPPER")
+                                .and()
+                                .oauth2Login();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
         );
 
 /*        http.authorizeRequests()

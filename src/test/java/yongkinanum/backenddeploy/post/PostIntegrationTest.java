@@ -127,7 +127,7 @@ class PostIntegrationTest extends MyRestDoc {
 
         //when
         ResultActions resultActions = mvc.perform(
-                get("/posts/search")
+                post("/posts/search")
                         .content(requestBody)
                         .contentType(MediaType.APPLICATION_JSON)
         );

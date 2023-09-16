@@ -37,7 +37,7 @@ public class PostController {
         return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }
 
-    @GetMapping("/search")
+    @PostMapping("/search")
     public ResponseEntity<?> findSpecific(@RequestBody PostRequest.FindSpecificDTO findSpecificDTO) {
         PostResponse.FindSpecificDTO findDTO = postService.findSpecificPosts(findSpecificDTO);
 

@@ -69,7 +69,7 @@ public class SecurityConfig {
                     try {
                         authorize
                                 .antMatchers(
-                                        "/users/**",
+                                        "/users", "/users/update", "/users/unregist",
                                         "/carts/**",
                                         "/posts/**",
                                         "/shops", "/shops/{id:\\d+}",

@@ -3,6 +3,10 @@ package yongkinanum.backenddeploy.post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import yongkinanum.backenddeploy.chat.Chat;
+import yongkinanum.backenddeploy.chat.ChatJPARepository;
+import yongkinanum.backenddeploy.chat.member.Member;
+import yongkinanum.backenddeploy.chat.member.MemberJPARepository;
 import yongkinanum.backenddeploy.core.error.exception.Exception403;
 import yongkinanum.backenddeploy.core.error.exception.Exception404;
 import yongkinanum.backenddeploy.menu.option.Option;
@@ -15,6 +19,7 @@ import yongkinanum.backenddeploy.user.User;
 import yongkinanum.backenddeploy.user.UserJPARepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +31,8 @@ public class PostService {
     private final UserJPARepository userJPARepository;
     private final ShopJPARepository shopJPARepository;
     private final OptionJPARepository optionJPARepository;
+    private final ChatJPARepository chatJPARepository;
+    private final MemberJPARepository memberJPARepository;
 
     @Transactional
     public void writePost(PostRequest.WriteDTO writeDTO, User user) {
@@ -39,6 +46,7 @@ public class PostService {
 
         findUser.findUserNullCheck(findUser);
 
+        //게시물 저장
         Post post = writeDTO.toEntity();
         post.setShop(findShop);
 
@@ -46,6 +54,7 @@ public class PostService {
 
         postJPARepository.save(post);
 
+        //게시물에 포함될 공유 메뉴, 옵션 저장
         List<Share> shares = new ArrayList<>();
 
         for(PostRequest.WriteDTO.OptionDTO optionDTO : optionDTOs) {
@@ -60,6 +69,24 @@ public class PostService {
         }
 
         shareJPARepository.saveAll(shares);
+
+        //게시물 작성 시, 생성될 채팅방 저장
+        Chat chat = Chat.builder()
+                .title("'" + post.getTitle() + "' 게시물의 채팅방")
+                .createAt(new Date())
+                .delete('N')
+                .post(post)
+                .build();
+
+        chatJPARepository.save(chat);
+
+        //채팅방 생성 시, 글 작성자는 채팅방 멤버로 간주하고 저장
+        Member member = Member.builder()
+                .user(findUser)
+                .chat(chat)
+                .build();
+
+        memberJPARepository.save(member);
     }
 
     public PostResponse.FindAllDTO findAllPost() {

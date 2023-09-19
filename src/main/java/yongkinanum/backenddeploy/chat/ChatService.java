@@ -26,6 +26,22 @@ public class ChatService {
     private final MessageJPARepository messageJPARepository;
 
     @Transactional
+    public ChatResponse.SendDTO receiveAndSendChat(Long idx, ChatRequest.ReceiveDTO receiveDTO, User user) {
+        Chat findChat = chatJPARepository.findByChatIdx(idx);
+        User findUser = userJPARepository.findByUserId(user.getUserId());
+
+        Message message = Message.builder()
+                .content(receiveDTO.getContent())
+                .chat(findChat)
+                .user(findUser)
+                .build();
+
+        messageJPARepository.save(message);
+
+        return new ChatResponse.SendDTO(message);
+    }
+
+    @Transactional
     public void enterChat(ChatRequest.EnterDTO enterDTO, User user) {
         Chat findChat = chatJPARepository.findChatByPostIdx(enterDTO.getIdx());
         User findUser = userJPARepository.findByUserId(user.getUserId());

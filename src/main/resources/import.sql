@@ -14,6 +14,9 @@ truncate table delivery_tb;
 truncate table address_tb;
 truncate table share_tb;
 truncate table notice_tb;
+truncate table chat_tb;
+truncate table message_tb;
+truncate table member_tb;
 SET REFERENTIAL_INTEGRITY TRUE;
 -- 모든 제약 조건 활성화
 
@@ -106,3 +109,19 @@ INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('8', '
 INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('9', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
 INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('10', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
 INSERT INTO notice_tb (`idx`, `content`, `create_at`, `user_idx`) VALUES ('11', '테스트 동네소식', '2023-08-29 13:54:19.823', 3);
+
+INSERT INTO chat_tb (`idx`, `title`, `create_at`, `delete`, `post_idx`) VALUES ('1', '`굽네치킨 드실분!!` 게시물의 채팅방', '2023-08-29 13:54:19.823', 'N', '2');
+INSERT INTO chat_tb (`idx`, `title`, `create_at`, `delete`, `post_idx`) VALUES ('2', '`테스트 포스트` 게시물의 채팅방', '2023-08-29 13:54:19.823', 'N', '1');
+
+INSERT INTO member_tb (`idx`, `user_idx`, `chat_idx`) VALUES ('1', '2', '1');
+INSERT INTO member_tb (`idx`, `user_idx`, `chat_idx`) VALUES ('2', '3', '1');
+INSERT INTO member_tb (`idx`, `user_idx`, `chat_idx`) VALUES ('3', '1', '1');
+INSERT INTO member_tb (`idx`, `user_idx`, `chat_idx`) VALUES ('4', '2', '2');
+INSERT INTO member_tb (`idx`, `user_idx`, `chat_idx`) VALUES ('5', '1', '2');
+
+INSERT INTO message_tb (`idx`, `content`, `create_at`, `user_idx`, `chat_idx`) VALUES ('1', '안녕하세요', '2023-08-29 13:54:19.823', '1', '1');
+INSERT INTO message_tb (`idx`, `content`, `create_at`, `user_idx`, `chat_idx`) VALUES ('2', '네, 안녕하세요', '2023-08-29 13:54:19.823', '2', '1');
+INSERT INTO message_tb (`idx`, `content`, `create_at`, `user_idx`, `chat_idx`) VALUES ('3', '다들 반갑습니다', '2023-08-29 13:54:19.823', '3', '1');
+INSERT INTO message_tb (`idx`, `content`, `create_at`, `user_idx`, `chat_idx`) VALUES ('4', '테스트 채팅방 맞죠?', '2023-08-29 13:54:19.823', '2', '2');
+INSERT INTO message_tb (`idx`, `content`, `create_at`, `user_idx`, `chat_idx`) VALUES ('5', '맞겠냐고', '2023-08-29 13:54:19.823', '1', '2');
+

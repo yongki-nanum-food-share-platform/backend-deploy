@@ -9,6 +9,19 @@ import java.util.stream.Collectors;
 
 public class ChatResponse {
     @Getter
+    public static class SendDTO {
+        private Long idx;
+        private String userName;
+        private String content;
+
+        public SendDTO(Message message) {
+            this.idx = message.getIdx();
+            this.userName = message.getUser().getUserName();
+            this.content = message.getContent();
+        }
+    }
+
+    @Getter
     public static class FindAllDTO {
         private List<ChatDTO> chats;
 

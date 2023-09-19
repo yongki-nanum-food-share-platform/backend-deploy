@@ -38,6 +38,7 @@ public class ChatResponse {
         private List<MessageDTO> messages;
 
         public FindDTO(List<Message> messages) {
+            this.idx = messages.get(0).getChat().getIdx();
             this.messages = messages.stream()
                     .map(MessageDTO::new)
                     .collect(Collectors.toList());

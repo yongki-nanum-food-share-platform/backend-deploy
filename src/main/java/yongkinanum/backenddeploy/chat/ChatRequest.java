@@ -6,6 +6,7 @@ import lombok.Setter;
 public class ChatRequest {
     @Getter
     public static class ReceiveDTO {
+        private String userName;
         private String content;
     }
 

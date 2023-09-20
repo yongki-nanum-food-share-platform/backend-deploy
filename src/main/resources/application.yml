@@ -46,3 +46,7 @@ logging:
   level:
     org.hibernate.SQL: debug  #Log
     org.hibernate.type: trace
+server:
+  servlet:
+    session:
+      persistent: false

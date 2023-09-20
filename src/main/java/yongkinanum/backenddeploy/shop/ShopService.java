@@ -55,6 +55,14 @@ public class ShopService {
         return new ShopResponse.FindDTO(findReviews, findOptions, findShop);
     }
 
+    public ShopResponse.FindBrandDTO findBrand(ShopRequest.FindBrandDTO findBrandDTO) {
+        Brand findBrand = brandJPARepository.findByBrandName(findBrandDTO.getBrandName());
+
+        int shopCount = shopJPARepository.findAllShopByBrandName(findBrand.getBrandName()).size();
+
+        return new ShopResponse.FindBrandDTO(findBrand, shopCount);
+    }
+
     @Transactional
     public void updateShopInfo(ShopRequest.UpdateDTO updateDTO, User user) {
         Shop findShop = shopJPARepository.findById(updateDTO.getIdx()).orElseThrow(

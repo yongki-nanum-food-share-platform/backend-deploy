@@ -2,6 +2,7 @@ package yongkinanum.backenddeploy.user;
 
 import lombok.Getter;
 import yongkinanum.backenddeploy.post.Post;
+import yongkinanum.backenddeploy.shop.Shop;
 import yongkinanum.backenddeploy.user.address.Address;
 
 import java.util.List;
@@ -58,6 +59,23 @@ public class UserResponse {
             public AddressDTO(Address address) {
                 this.address = address.getAddress();
             }
+        }
+    }
+
+    @Getter
+    public static class FindShopDTO {
+        private Long idx;
+        private String shopName;
+        private String shopAddress;
+        private int tip;
+        private String description;
+
+        public FindShopDTO(Shop shop) {
+            this.idx = shop.getIdx();
+            this.shopName = shop.getShopName();
+            this.shopAddress = shop.getShopAddress();
+            this.tip = shop.getTip();
+            this.description = shop.getDescription();
         }
     }
 }

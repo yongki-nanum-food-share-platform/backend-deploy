@@ -43,6 +43,7 @@ public class ShopResponse {
         private Long idx;
         private String shopName;
         private String shopAddress;
+        private String shopDescription;
         private String image;
         private Float starPoint;
         private Integer orderCount;
@@ -54,6 +55,7 @@ public class ShopResponse {
             this.idx = shop.getIdx();
             this.shopName = shop.getShopName();
             this.shopAddress = shop.getShopAddress();
+            this.shopDescription = shop.getDescription();
             this.image = shop.getBrand().getImage();
             this.starPoint = shop.getStarPoint();
             this.orderCount = shop.getOrderCount();

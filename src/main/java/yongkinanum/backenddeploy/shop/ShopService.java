@@ -73,6 +73,7 @@ public class ShopService {
         findShop.setShopName(updateDTO.getNewName());
         findShop.setShopAddress(updateDTO.getNewAddress());
         findShop.setTip(Integer.parseInt(updateDTO.getNewTip()));
+        findShop.setDescription(updateDTO.getNewDescription());
     }
 
     private void checkUnregistShop(Shop shop) {

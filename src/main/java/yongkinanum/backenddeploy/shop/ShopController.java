@@ -43,16 +43,16 @@ public class ShopController {
         return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<?> update(@RequestBody ShopRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        shopService.updateShopInfo(updateDTO, userDetails.getUser());
+    @PutMapping("/{id}/update")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody ShopRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        shopService.updateShopInfo(id, updateDTO, userDetails.getUser());
 
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
-    @DeleteMapping("/unregist")
-    public ResponseEntity<?> unregist(@RequestBody ShopRequest.UnregistDTO unregistDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        shopService.unregistShop(unregistDTO, userDetails.getUser());
+    @DeleteMapping("/{id}/unregist")
+    public ResponseEntity<?> unregist(@PathVariable Long id, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        shopService.unregistShop(id, userDetails.getUser());
 
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }

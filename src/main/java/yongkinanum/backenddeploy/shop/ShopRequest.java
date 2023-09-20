@@ -52,6 +52,7 @@ class ShopRequest {
         private String newName;
         private String newAddress;
         private String newTip;
+        private String newDescription;
     }
 
     @Getter

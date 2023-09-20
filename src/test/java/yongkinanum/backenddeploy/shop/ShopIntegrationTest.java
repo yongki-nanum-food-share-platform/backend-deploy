@@ -77,6 +77,31 @@ public class ShopIntegrationTest extends MyRestDoc {
     }
 
     @Test
+    @DisplayName("브랜드 조회 테스트")
+    void find_brand_test() throws Exception {
+        //given
+        ShopRequest.FindBrandDTO findBrandDTO = new ShopRequest.FindBrandDTO();
+        findBrandDTO.setBrandName("굽네");
+
+        String requestBody = om.writeValueAsString(findBrandDTO);
+
+        //when
+        ResultActions resultActions = mvc.perform(
+                post("/shops/brand")
+                        .content(requestBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+        );
+
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println("테스트 : " + responseBody);
+
+        //then
+        resultActions.andExpect(jsonPath("$.success").value("true"))
+                .andDo(print())
+                .andDo(document);
+    }
+
+    @Test
     @DisplayName("가게 리스트 조회 테스트")
     @WithUserDetails("alstjr12")
     void find_all_shop_test() throws Exception {

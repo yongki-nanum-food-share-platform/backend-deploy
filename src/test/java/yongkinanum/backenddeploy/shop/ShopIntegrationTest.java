@@ -137,11 +137,12 @@ public class ShopIntegrationTest extends MyRestDoc {
         updateDTO.setNewName("굽네치킨 부산안락안락");
         updateDTO.setNewAddress("부산광역시 동래구 안락동");
         updateDTO.setNewTip("3000");
+        updateDTO.setNewDescription("구미베어베어");
 
         String requestBody = om.writeValueAsString(updateDTO);
 
         ResultActions resultActions = mvc.perform(
-                put("/shops/update")
+                put("/shops/{id}/update", 1)
                         .content(requestBody)
                         .contentType(MediaType.APPLICATION_JSON)
         );
@@ -161,14 +162,11 @@ public class ShopIntegrationTest extends MyRestDoc {
     void delete_shop_test() throws Exception {
         //given
         ShopRequest.UnregistDTO unregistDTO = new ShopRequest.UnregistDTO();
-        unregistDTO.setIdx(1L);
-
-        String requestBody = om.writeValueAsString(unregistDTO);
 
         //when
         ResultActions resultActions = mvc.perform(
-                RestDocumentationRequestBuilders.delete("/shops/unregist")
-                        .content(requestBody)
+                RestDocumentationRequestBuilders
+                        .delete("/shops/{id}/unregist", 1)
                         .contentType(MediaType.APPLICATION_JSON)
         );
 

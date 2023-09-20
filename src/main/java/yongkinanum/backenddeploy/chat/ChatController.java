@@ -16,7 +16,7 @@ import yongkinanum.backenddeploy.core.utils.ApiUtils;
 public class ChatController {
     private final ChatService chatService;
 
-    @MessageMapping("/{id}")
+    @MessageMapping("/send/{id}")
     @SendTo("/chats/{id}")
     public ResponseEntity<?> receiveAndSend(@DestinationVariable Long id, ChatRequest.ReceiveDTO receiveDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
         ChatResponse.SendDTO sendDTO = chatService.receiveAndSendChat(id, receiveDTO, userDetails.getUser());

@@ -36,6 +36,13 @@ public class ShopController {
          return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }
 
+    @PostMapping("/brand")
+    public ResponseEntity<?> findBrand(@RequestBody ShopRequest.FindBrandDTO findBrandDTO) {
+        ShopResponse.FindBrandDTO findDTO = shopService.findBrand(findBrandDTO);
+
+        return ResponseEntity.ok().body(ApiUtils.success(findDTO));
+    }
+
     @PutMapping("/update")
     public ResponseEntity<?> update(@RequestBody ShopRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
         shopService.updateShopInfo(updateDTO, userDetails.getUser());

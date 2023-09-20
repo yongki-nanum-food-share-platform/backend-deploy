@@ -12,4 +12,7 @@ public interface ShopJPARepository extends JpaRepository<Shop, Long> {
 
     @Query("select s from Shop s where  s.brand.brandName like %:brandName%")
     List<Shop> findAllShopByBrandName(@Param("brandName") String brandName);
+
+    @Query("select s from Shop s where s.user.idx = :idx")
+    Shop findShopByUserIdx(@Param("idx") Long idx);
 }

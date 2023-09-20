@@ -64,8 +64,8 @@ public class ShopService {
     }
 
     @Transactional
-    public void updateShopInfo(ShopRequest.UpdateDTO updateDTO, User user) {
-        Shop findShop = shopJPARepository.findById(updateDTO.getIdx()).orElseThrow(
+    public void updateShopInfo(Long idx, ShopRequest.UpdateDTO updateDTO, User user) {
+        Shop findShop = shopJPARepository.findById(idx).orElseThrow(
                 () -> new Exception404("해당 가게를 찾을 수 없습니다.")
         );
         checkUnregistShop(findShop);
@@ -91,8 +91,8 @@ public class ShopService {
     }
 
     @Transactional
-    public void unregistShop(ShopRequest.UnregistDTO unregistDTO, User user) {
-        Shop findShop = shopJPARepository.findById(unregistDTO.getIdx()).orElseThrow(
+    public void unregistShop(Long idx, User user) {
+        Shop findShop = shopJPARepository.findById(idx).orElseThrow(
                 () -> new Exception404("해당 가게를 찾을 수 없습니다.")
         );
         checkUnregistShop(findShop);

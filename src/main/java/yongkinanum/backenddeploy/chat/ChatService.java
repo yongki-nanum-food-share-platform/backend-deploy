@@ -11,6 +11,7 @@ import yongkinanum.backenddeploy.core.error.exception.Exception409;
 import yongkinanum.backenddeploy.user.User;
 import yongkinanum.backenddeploy.user.UserJPARepository;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,14 +27,15 @@ public class ChatService {
     private final MessageJPARepository messageJPARepository;
 
     @Transactional
-    public ChatResponse.SendDTO receiveAndSendChat(Long idx, ChatRequest.ReceiveDTO receiveDTO, User user) {
+    public ChatResponse.SendDTO receiveAndSendChat(Long idx, ChatRequest.ReceiveDTO receiveDTO) {
         Chat findChat = chatJPARepository.findByChatIdx(idx);
-        User findUser = userJPARepository.findByUserId(user.getUserId());
+        User findUser = userJPARepository.findByUserName(receiveDTO.getUserName());
 
         Message message = Message.builder()
                 .content(receiveDTO.getContent())
                 .chat(findChat)
                 .user(findUser)
+                .createAt(new Date())
                 .build();
 
         messageJPARepository.save(message);

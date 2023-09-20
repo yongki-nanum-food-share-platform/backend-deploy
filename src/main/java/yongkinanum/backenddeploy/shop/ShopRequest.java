@@ -20,6 +20,8 @@ class ShopRequest {
         @NotBlank
         private String tip;
 
+        private String description;
+
         @NotBlank
         private String brandName;
 
@@ -27,6 +29,7 @@ class ShopRequest {
             return Shop.builder()
                     .shopName(shopName)
                     .shopAddress(shopAddress)
+                    .description(description)
                     .starPoint(0.0F)
                     .reviewCount(0)
                     .orderCount(0)
@@ -42,6 +45,12 @@ class ShopRequest {
     @Setter
     public static class FindAllDTO {
         private String menuName;
+    }
+
+    @Getter
+    @Setter
+    public static class FindBrandDTO {
+        private String brandName;
     }
 
     @Getter

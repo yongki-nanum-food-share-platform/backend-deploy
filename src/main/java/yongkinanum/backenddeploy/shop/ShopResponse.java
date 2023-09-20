@@ -5,6 +5,7 @@ import yongkinanum.backenddeploy.menu.option.Option;
 import yongkinanum.backenddeploy.order.OrderResponse;
 import yongkinanum.backenddeploy.order.item.Item;
 import yongkinanum.backenddeploy.review.Review;
+import yongkinanum.backenddeploy.shop.brand.Brand;
 
 import java.util.List;
 import java.util.Map;
@@ -114,6 +115,21 @@ public class ShopResponse {
                 this.userName = review.getUser().getUserName();
                 this.createAt = review.getCreateAt().toString();
             }
+        }
+    }
+
+    @Getter
+    public static class FindBrandDTO {
+        private Long idx;
+        private String brandName;
+        private String image;
+        private int shopCount;
+
+        public FindBrandDTO(Brand brand, int shopCount) {
+            this.idx = brand.getIdx();
+            this.brandName = brand.getBrandName();
+            this.image = brand.getImage();
+            this.shopCount = shopCount;
         }
     }
 }

@@ -25,6 +25,7 @@ INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, 
 INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('2', 'alstjr1999', '굽네사장', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'SHOPPER', '2023-08-29 13:54:19.823');
 INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('3', 'alstjr12', '악성리뷰러', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'USER', '2023-08-29 13:54:19.823');
 INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('4', 'test', 'admin', '{bcrypt}$2a$10$9GKtBf/GS2xSpPaopBrEYOybbq3/PmN8q8TH9XortBCc6g0XwzRnq', 'N', 'USER', '2023-08-29 13:54:19.823');
+INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('5', 'alstjr6774', '굽네사장님2', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'SHOPPER', '2023-08-29 13:54:19.823');
 
 -- INIT 주소
 INSERT INTO address_tb (`idx`, `address`, `user_idx`) VALUES ('1', '연산동', '3');
@@ -34,7 +35,7 @@ INSERT INTO brand_tb (`idx`, `brand_name`, `image`) VALUES ('1', '굽네치킨',
 
 -- INIT 가게
 INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`, `description`) VALUES ('1', '굽네치킨 부산안락점', '부산광역시 동래구 안락동', '5.0', '3', '3', 'N', '3000', '2', '1', '굽네치킨 원조 부산 안락점입니다.');
-INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`, `description`) VALUES ('2', '굽네치킨 부산연산점', '부산광역시 연제구 연산동', '0.0', '0', '0', 'N', '3000', '2', '1', '안녕하세요. 맛있게 드시고 가세요.');
+INSERT INTO shop_tb (`idx`, `shop_name`, `shop_address`, `star_point`, `review_count`, `order_count`, `unregist`, `tip`, `user_idx`, `brand_idx`, `description`) VALUES ('2', '굽네치킨 부산연산점', '부산광역시 연제구 연산동', '0.0', '0', '0', 'N', '3000', '5', '1', '안녕하세요. 맛있게 드시고 가세요.');
 
 -- INIT 메뉴
 INSERT INTO menu_tb (`idx`, `menu_name`, `description`, `brand_idx`) VALUES ('1', '고추바사삭', '고추를 잘개 부수어 토핑하고 오븐에 갓 구워낸 바삭함 지존의 고추바사삭', '1');

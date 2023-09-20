@@ -121,6 +121,27 @@ class UserIntegrationTest extends MyRestDoc {
     }
 
     @Test
+    @DisplayName("회원이 보유한 가게 조회")
+    @WithUserDetails(value = "alstjr1999")
+    void find_user_shop_info_test() throws Exception {
+        //given
+        Long idx = 2L;
+
+        //when
+        ResultActions resultActions = mvc.perform(
+                get("/users/{id}/shop", idx)
+        );
+
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println("테스트 : " + responseBody);
+
+        //then
+        resultActions.andExpect(jsonPath("$.success").value("true"))
+                .andDo(print())
+                .andDo(document);
+    }
+
+    @Test
     @DisplayName("유저 주소 추가 테스트")
     @WithUserDetails(value = "alstjr12")
     void add_user_address_test() throws Exception {

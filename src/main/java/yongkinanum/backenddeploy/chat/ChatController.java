@@ -8,8 +8,12 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import yongkinanum.backenddeploy.core.error.exception.Exception404;
 import yongkinanum.backenddeploy.core.security.CustomUserDetails;
+import yongkinanum.backenddeploy.core.security.JwtProvider;
 import yongkinanum.backenddeploy.core.utils.ApiUtils;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,8 +22,8 @@ public class ChatController {
 
     @MessageMapping("/send/{id}")
     @SendTo("/chats/{id}")
-    public ResponseEntity<?> receiveAndSend(@DestinationVariable Long id, ChatRequest.ReceiveDTO receiveDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        ChatResponse.SendDTO sendDTO = chatService.receiveAndSendChat(id, receiveDTO, userDetails.getUser());
+    public ResponseEntity<?> receiveAndSend(@DestinationVariable Long id, @RequestBody ChatRequest.ReceiveDTO receiveDTO) {
+        ChatResponse.SendDTO sendDTO = chatService.receiveAndSendChat(id, receiveDTO);
 
         return ResponseEntity.ok().body(ApiUtils.success(sendDTO));
     }

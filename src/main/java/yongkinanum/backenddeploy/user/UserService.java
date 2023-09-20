@@ -4,13 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import yongkinanum.backenddeploy.core.error.exception.Exception400;
-import yongkinanum.backenddeploy.core.error.exception.Exception401;
-import yongkinanum.backenddeploy.core.error.exception.Exception404;
-import yongkinanum.backenddeploy.core.error.exception.Exception409;
+import yongkinanum.backenddeploy.core.error.exception.*;
 import yongkinanum.backenddeploy.core.security.JwtProvider;
 import yongkinanum.backenddeploy.post.Post;
 import yongkinanum.backenddeploy.post.PostJPARepository;
+import yongkinanum.backenddeploy.shop.Shop;
+import yongkinanum.backenddeploy.shop.ShopJPARepository;
 import yongkinanum.backenddeploy.user.address.Address;
 import yongkinanum.backenddeploy.user.address.AddressJPARepository;
 
@@ -21,6 +20,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class UserService {
     private final UserJPARepository userJPARepository;
+    private final ShopJPARepository shopJPARepository;
     private final PostJPARepository postJPARepository;
     private final AddressJPARepository addressJPARepository;
     private final PasswordEncoder passwordEncoder;
@@ -76,6 +76,18 @@ public class UserService {
         List<Post> posts = postJPARepository.findByUserId(findUser.getUserId());
 
         return new UserResponse.FindDTO(posts, findUser);
+    }
+
+    public UserResponse.FindShopDTO findShopInfo(Long idx, User user) {
+        User findUser = userJPARepository.findByUserId(user.getUserId());
+
+        if(findUser.getIdx() != idx) {
+            throw new Exception403("권한이 없습니다.");
+        }
+
+        Shop findShop = shopJPARepository.findShopByUserIdx(findUser.getIdx());
+
+        return new UserResponse.FindShopDTO(findShop);
     }
 
     @Transactional

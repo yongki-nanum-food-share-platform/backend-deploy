@@ -59,6 +59,13 @@ public class UserController {
         return ResponseEntity.ok().body(ApiUtils.success(findDTO));
     }
 
+    @GetMapping("/{id}/shop")
+    public ResponseEntity<?> findShop(@PathVariable Long id, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        UserResponse.FindShopDTO findShopDTO = userService.findShopInfo(id, userDetails.getUser());
+
+        return ResponseEntity.ok().body(ApiUtils.success(findShopDTO));
+    }
+
     @PutMapping("/update")
     public ResponseEntity<?> update(@RequestBody @Valid UserRequest.UpdateDTO updateDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
         userService.updateUserInfo(updateDTO, userDetails.getUser());

@@ -3,8 +3,10 @@ package yongkinanum.backenddeploy.order;
 import lombok.Getter;
 import yongkinanum.backenddeploy.core.error.exception.Exception404;
 import yongkinanum.backenddeploy.menu.Menu;
+import yongkinanum.backenddeploy.menu.option.Option;
 import yongkinanum.backenddeploy.order.delivery.Delivery;
 import yongkinanum.backenddeploy.order.item.Item;
+import yongkinanum.backenddeploy.shop.Shop;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +14,73 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OrderResponse {
+    @Getter
+    public static class SaveDTO {
+        public Long orderIdx;
+
+        public SaveDTO(Order order) {
+            this.orderIdx = order.getIdx();
+        }
+    }
+
+    @Getter
+    public static class InfoDTO {
+        private Long postIdx;
+        private String shopName;
+        private String shopAddress;
+        private List<MenuDTO> menus;
+        private List<String> peoples;
+        private int peopleCount;
+
+        public InfoDTO(Long idx, Shop shop, List<Option> options, List<String> peoples) {
+            this.postIdx = idx;
+            this.shopName = shop.getShopName();
+            this.shopAddress = shop.getShopAddress();
+
+            Map<String, List<Option>> OptionsByMenu = options.stream()
+                    .collect(Collectors.groupingBy(option ->option.getMenu().getMenuName()));
+
+            this.menus = OptionsByMenu.entrySet().stream()
+                    .map(entry -> new InfoDTO.MenuDTO(entry.getValue()))
+                    .collect(Collectors.toList());
+
+            this.peoples = peoples;
+            this.peopleCount = peoples.size();
+        }
+
+        @Getter
+        public static class MenuDTO {
+            private Long idx;
+            private String menuName;
+            private int menuPrice;
+            private List<OptionDTO> options;
+
+            public MenuDTO(List<Option> options) {
+                this.idx = options.get(0).getMenu().getIdx();
+                this.menuName = options.get(0).getMenu().getMenuName();
+                this.menuPrice = options.stream()
+                        .mapToInt(option -> option.getPrice())
+                        .sum();
+                this.options = options.stream()
+                        .map(OptionDTO::new)
+                        .collect(Collectors.toList());
+            }
+
+            @Getter
+            public static class OptionDTO {
+                private Long idx;
+                private String optionName;
+                private int optionPrice;
+
+                public OptionDTO(Option option) {
+                    this.idx = option.getIdx();
+                    this.optionName = option.getOptionName();
+                    this.optionPrice = option.getPrice();
+                }
+            }
+        }
+    }
+
     @Getter
     public static class FindAllDTO {
         private List<OrderDTO> orders;

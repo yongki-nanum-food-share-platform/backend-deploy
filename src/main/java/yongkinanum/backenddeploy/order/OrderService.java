@@ -1,17 +1,27 @@
 package yongkinanum.backenddeploy.order;
 
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yongkinanum.backenddeploy.cart.Cart;
 import yongkinanum.backenddeploy.cart.CartJPARepository;
+import yongkinanum.backenddeploy.chat.Chat;
+import yongkinanum.backenddeploy.chat.ChatJPARepository;
+import yongkinanum.backenddeploy.chat.member.Member;
+import yongkinanum.backenddeploy.chat.member.MemberJPARepository;
 import yongkinanum.backenddeploy.core.error.exception.Exception400;
 import yongkinanum.backenddeploy.core.error.exception.Exception403;
 import yongkinanum.backenddeploy.core.error.exception.Exception404;
+import yongkinanum.backenddeploy.menu.option.Option;
 import yongkinanum.backenddeploy.order.delivery.Delivery;
 import yongkinanum.backenddeploy.order.delivery.DeliveryJPARepository;
 import yongkinanum.backenddeploy.order.item.Item;
 import yongkinanum.backenddeploy.order.item.ItemJPARepository;
+import yongkinanum.backenddeploy.post.Post;
+import yongkinanum.backenddeploy.post.PostJPARepository;
+import yongkinanum.backenddeploy.post.share.Share;
+import yongkinanum.backenddeploy.post.share.ShareJPARepository;
 import yongkinanum.backenddeploy.shop.Shop;
 import yongkinanum.backenddeploy.shop.ShopJPARepository;
 import yongkinanum.backenddeploy.user.User;
@@ -30,9 +40,13 @@ public class OrderService {
     private final ShopJPARepository shopJPARepository;
     private final CartJPARepository cartJPARepository;
     private final DeliveryJPARepository deliveryJPARepository;
+    private final PostJPARepository postJPARepository;
+    private final ShareJPARepository shareJPARepository;
+    private final ChatJPARepository chatJPARepository;
+    private final MemberJPARepository memberJPARepository;
 
     @Transactional
-    public void saveOrder(User user) {
+    public OrderResponse.SaveDTO saveOrder(User user) {
         User findUser  = userJPARepository.findByUserId(user.getUserId());
 
         findUser.findUserNullCheck(findUser);
@@ -92,6 +106,8 @@ public class OrderService {
 
         //배달 시작
         deliveryJPARepository.save(newDelivery);
+
+        return new OrderResponse.SaveDTO(newOrder);
     }
 
     private List<Item> makeOrderItems(List<Cart> carts, Order newOrder) {
@@ -105,6 +121,26 @@ public class OrderService {
                         .shop(cart.getShop())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    public OrderResponse.InfoDTO findOrderInfo(OrderRequest.InfoDTO infoDTO) {
+        Post findPost = postJPARepository.findById(infoDTO.getPostIdx()).orElseThrow(
+                () -> new Exception404("해당 게시물을 찾을 수 없습니다."));
+
+        List<Share> findShares = shareJPARepository.findAllShareByPostIdx(findPost.getIdx());
+
+        List<Option> findOptions = findShares.stream()
+                .map(findShare -> findShare.getOption())
+                .collect(Collectors.toList());
+
+        Shop findShop = findPost.getShop();
+
+        Chat findChat = chatJPARepository.findChatByPostIdx(findPost.getIdx());
+        List<String> findMemberNames = memberJPARepository.findMemberByChatIdx(findChat.getIdx()).stream()
+                .map(findMember -> findMember.getUser().getUserName())
+                .collect(Collectors.toList());
+
+        return new OrderResponse.InfoDTO(findPost.getIdx(), findShop, findOptions, findMemberNames);
     }
 
     public OrderResponse.FindAllDTO findAllOrders(User user) {

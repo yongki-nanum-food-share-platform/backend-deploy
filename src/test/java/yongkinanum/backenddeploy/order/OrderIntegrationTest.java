@@ -49,6 +49,32 @@ class OrderIntegrationTest extends MyRestDoc {
     }
 
     @Test
+    @DisplayName("결제정보 조회 테스트")
+    @WithUserDetails(value = "alstjr12")
+    void find_order_info_test() throws Exception {
+        //given
+        OrderRequest.InfoDTO infoDTO = new OrderRequest.InfoDTO();
+        infoDTO.setPostIdx(1L);
+
+        String requestBody = om.writeValueAsString(infoDTO);
+
+        //when
+        ResultActions resultActions = mvc.perform(
+                post("/orders/info")
+                        .content(requestBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+        );
+
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println("테스트 : " + responseBody);
+
+        //then
+        resultActions.andExpect(jsonPath("$.success").value("true"))
+                .andDo(print())
+                .andDo(document);
+    }
+
+    @Test
     @DisplayName("전체 주문 조회 테스트")
     @WithUserDetails(value = "alstjr12")
     void find_all_order_test() throws Exception {

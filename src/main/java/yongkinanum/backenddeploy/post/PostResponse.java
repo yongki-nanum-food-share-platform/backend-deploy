@@ -54,6 +54,7 @@ public class PostResponse {
         private Long idx;
         private String title;
         private String content;
+        private Long authorIdx;
         private String author;
         private String createAt;
         private String time;
@@ -70,6 +71,7 @@ public class PostResponse {
             this.idx = post.getIdx();
             this.title = post.getTitle();
             this.content = post.getContent();
+            this.authorIdx = post.getUser().getIdx();
             this.author = post.getUser().getUserName();
             this.createAt = post.getCreateAt().toString();
             this.time = post.getTime();

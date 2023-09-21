@@ -87,6 +87,10 @@ public class UserService {
 
         Shop findShop = shopJPARepository.findShopByUserIdx(findUser.getIdx());
 
+        if(findShop == null) {
+            throw new Exception404("해당 가게를 찾을 수 없습니다.");
+        }
+
         return new UserResponse.FindShopDTO(findShop);
     }
 

@@ -15,9 +15,16 @@ public class OrderController {
 
     @PostMapping("/save")
     public ResponseEntity<?> save(@AuthenticationPrincipal CustomUserDetails userDetails) {
-        orderService.saveOrder(userDetails.getUser());
+        OrderResponse.SaveDTO saveDTO = orderService.saveOrder(userDetails.getUser());
 
-        return ResponseEntity.ok().body(ApiUtils.success(null));
+        return ResponseEntity.ok().body(ApiUtils.success(saveDTO));
+    }
+
+    @PostMapping("/info")
+    public ResponseEntity<?> orderInfo(@RequestBody OrderRequest.InfoDTO infoDTO, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        OrderResponse.InfoDTO orderInfoDTO = orderService.findOrderInfo(infoDTO);
+
+        return ResponseEntity.ok().body(ApiUtils.success(orderInfoDTO));
     }
 
     @GetMapping()

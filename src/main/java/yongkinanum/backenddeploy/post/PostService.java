@@ -7,6 +7,8 @@ import yongkinanum.backenddeploy.chat.Chat;
 import yongkinanum.backenddeploy.chat.ChatJPARepository;
 import yongkinanum.backenddeploy.chat.member.Member;
 import yongkinanum.backenddeploy.chat.member.MemberJPARepository;
+import yongkinanum.backenddeploy.chat.message.Message;
+import yongkinanum.backenddeploy.chat.message.MessageJPARepository;
 import yongkinanum.backenddeploy.core.error.exception.Exception403;
 import yongkinanum.backenddeploy.core.error.exception.Exception404;
 import yongkinanum.backenddeploy.menu.option.Option;
@@ -33,6 +35,7 @@ public class PostService {
     private final OptionJPARepository optionJPARepository;
     private final ChatJPARepository chatJPARepository;
     private final MemberJPARepository memberJPARepository;
+    private final MessageJPARepository messageJPARepository;
 
     @Transactional
     public void writePost(PostRequest.WriteDTO writeDTO, User user) {
@@ -87,6 +90,16 @@ public class PostService {
                 .build();
 
         memberJPARepository.save(member);
+
+        //채팅방 생성 시, 노출될 기본 메시지
+        Message defaultMessage = Message.builder()
+                .content("아직 상대방과 주고 받은 대화가 없어요! 대화를 나눠보세요.")
+                .createAt(new Date())
+                .user(findUser)
+                .chat(chat)
+                .build();
+
+        messageJPARepository.save(defaultMessage);
     }
 
     public PostResponse.FindAllDTO findAllPost() {

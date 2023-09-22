@@ -48,10 +48,12 @@ public class ChatResponse {
     @Getter
     public static class FindDTO {
         private Long idx;
+        private Long postIdx;
         private List<MessageDTO> messages;
 
         public FindDTO(List<Message> messages) {
             this.idx = messages.get(0).getChat().getIdx();
+            this.postIdx = messages.get(0).getChat().getPost().getIdx();
             this.messages = messages.stream()
                     .map(MessageDTO::new)
                     .collect(Collectors.toList());

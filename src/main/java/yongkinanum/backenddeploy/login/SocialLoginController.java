@@ -33,7 +33,7 @@ public class SocialLoginController {
         return ResponseEntity.ok().body(ApiUtils.success(kakaoDTO));
     }
 
-    @PostMapping("/login/kakao/check")
+    @GetMapping("/login/kakao/check")
     public String receive(@RequestParam String code) {
         System.out.println(code);
 

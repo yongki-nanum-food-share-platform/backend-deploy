@@ -1,32 +1,39 @@
 package yongkinanum.backenddeploy.login;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import yongkinanum.backenddeploy.core.utils.ApiUtils;
 import yongkinanum.backenddeploy.user.UserJPARepository;
 
-@Controller
 @RequiredArgsConstructor
+@RestController
 public class SocialLoginController {
-    private final UserJPARepository userJPARepository;
-    private final PasswordEncoder passwordEncoder;
+
+    @Value("${spring.security.oauth2.client.registration.kakao.client-id}")
+    private String clientId;
+
+    @Value("${spring.security.oauth2.client.registration.kakao.redirect-uri}")
+    private String redirectUri;
+
+
     @GetMapping("/login/kakao")
-    public String showLoginPage(Model model) {
-        String url = "https://kauth.kakao.com/oauth/authorize?client_id=e3743c41d0df1be9ef7bdc6790434cde&redirect_uri=http://localhost:8080/login/oauth2/code/kakao";
-        System.out.println("login 컨트롤러 접근");
-        return url;
+    public ResponseEntity<?> kakaoLogin() {
+        String url = String.format("https://kauth.kakao.com/oauth/authorize?client_id=%s&redirect_uri=%s&response_type=code", clientId, redirectUri);
+        SocialLoginResponse.KakaoDTO kakaoDTO = new SocialLoginResponse.KakaoDTO();
+        kakaoDTO.setKakaoUri(url);
+
+        return ResponseEntity.ok().body(ApiUtils.success(kakaoDTO));
     }
 
-    @GetMapping("/login")
-    public String home() {
-        return "test/login";
-    }
-
-    @PostMapping("/login/oauth2/code/kakao")
+    @PostMapping("/login/kakao/check")
     public String receive(@RequestParam String code) {
         System.out.println(code);
 

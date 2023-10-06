@@ -47,7 +47,7 @@ public class SocialLoginController {
         return ResponseEntity.ok().body(ApiUtils.success(kakaoDTO));
     }
 
-    @GetMapping("/login/kakao/check")
+    @PostMapping("/login/kakao/check")
     public @ResponseBody ResponseEntity<String> kakaoCallback(@RequestParam String code){
         // 인가 코드 받아오기
         RestTemplate rt = new RestTemplate();

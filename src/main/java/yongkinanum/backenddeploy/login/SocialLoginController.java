@@ -18,6 +18,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
+import yongkinanum.backenddeploy.core.security.JwtProvider;
 import yongkinanum.backenddeploy.core.utils.ApiUtils;
 import yongkinanum.backenddeploy.user.User;
 import yongkinanum.backenddeploy.user.UserJPARepository;
@@ -48,7 +49,7 @@ public class SocialLoginController {
     }
 
     @PostMapping("/login/kakao/check")
-    public @ResponseBody ResponseEntity<String> kakaoCallback(@RequestParam String code){
+    public @ResponseBody ResponseEntity<?> kakaoCallback(@RequestBody String code){
         // 인가 코드 받아오기
         RestTemplate rt = new RestTemplate();
         rt.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
@@ -109,6 +110,8 @@ public class SocialLoginController {
             e.printStackTrace();
         }
 
-        return ResponseEntity.ok().body(userService.socialLogin(Objects.requireNonNull(userKakaoProfile)));
+        String jwt = userService.socialLogin(Objects.requireNonNull(userKakaoProfile));
+
+        return ResponseEntity.ok().header(JwtProvider.HEADER, jwt).body(ApiUtils.success(null));
     }
 }

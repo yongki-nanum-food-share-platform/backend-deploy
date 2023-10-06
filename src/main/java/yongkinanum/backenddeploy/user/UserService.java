@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yongkinanum.backenddeploy.core.error.exception.*;
 import yongkinanum.backenddeploy.core.security.JwtProvider;
+import yongkinanum.backenddeploy.login.UserKakaoProfile;
 import yongkinanum.backenddeploy.post.Post;
 import yongkinanum.backenddeploy.post.PostJPARepository;
 import yongkinanum.backenddeploy.shop.Shop;
@@ -13,6 +14,7 @@ import yongkinanum.backenddeploy.shop.ShopJPARepository;
 import yongkinanum.backenddeploy.user.address.Address;
 import yongkinanum.backenddeploy.user.address.AddressJPARepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -56,6 +58,26 @@ public class UserService {
         }
 
         return JwtProvider.create(findUser);
+    }
+
+    @Transactional
+    public String socialLogin(UserKakaoProfile userKakaoProfile){
+
+        User user = User.builder()
+                .idx(userKakaoProfile.getId())
+                .userId("kakao" + userKakaoProfile.getId())
+                .userName("kakao" + userKakaoProfile.getId())
+                .unregist('N')
+                .createAt(new Date())
+                .role(Role.ROLE_USER.toString())
+                .password("1234")
+                .build();
+
+        User originUser = userJPARepository.findByUserId("kakao" + userKakaoProfile.getId());
+        if(originUser == null){
+            userJPARepository.save(user);
+        }
+        return JwtProvider.create(user);
     }
 
     // 탈퇴한 유저일 경우 조회 불가

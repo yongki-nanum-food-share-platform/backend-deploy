@@ -34,7 +34,7 @@ spring:
             client-name: Kakao
             authorization-grant-type: authorization_code
             client-authentication-method: POST #카카오는 필수 파라미터를 POST로 요청해야함
-            redirect-uri: http://localhost:8088 #코드를 받는 uri(naver 의 콜백 uri)
+            redirect-uri: http://localhost:8088/redirect #코드를 받는 uri(naver 의 콜백 uri)
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize

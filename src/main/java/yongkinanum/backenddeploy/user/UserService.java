@@ -69,7 +69,7 @@ public class UserService {
                 .userName("kakao" + userKakaoProfile.getId())
                 .unregist('N')
                 .createAt(new Date())
-                .role(Role.ROLE_USER.toString())
+                .role(Role.ROLE_USER.getDescription())
                 .password("1234")
                 .build();
 

@@ -88,10 +88,6 @@ public class SecurityConfig {
                 }
         );
 
-/*        http.authorizeRequests()
-                .antMatchers("/users/login", "/users/regist", "/users/regist/check").permitAll()
-                .anyRequest().authenticated();*/
-
         return http.build();
     }
 

@@ -28,6 +28,7 @@ dependencies {
     // 인증, 인가
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
@@ -46,6 +47,9 @@ dependencies {
     implementation 'com.auth0:java-jwt:4.3.0'
 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64'
 
     //rest doc
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'

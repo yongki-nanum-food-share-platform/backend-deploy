@@ -42,6 +42,11 @@ spring:
             authorization-grant-type: authorization_code
             scope: name, email, nickname
             client-name: Naver
+          google:
+            client-id: 225324079337-6k80g8ie3rgmlbeqtisvvt55a4i26su2.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:8088/redirectg
+            scope: profile,email
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize

@@ -15,4 +15,10 @@ class SocialLoginResponse {
     public static class NaverDTO {
         private String naverUri;
     }
+
+    @Getter
+    @Setter
+    public static class GoogleDTO {
+        private String googleUri;
+    }
 }

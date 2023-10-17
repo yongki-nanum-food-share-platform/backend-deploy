@@ -69,7 +69,7 @@ public class SocialLoginController {
         RestTemplate rt = new RestTemplate();
         rt.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-type","text/html;charset=utf-8");
+        headers.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
@@ -82,9 +82,6 @@ public class SocialLoginController {
         // kakaoTokenRequest는 데이터(Body)와 헤더(Header)를 Entity가 된다.
         HttpEntity<MultiValueMap<String, String>> naverTokenRequest = new HttpEntity<>(params, headers);
 
-        System.out.println("11111 = " + 22222);
-
-
         // POST 방식으로 Http 요청한다. 그리고 response 변수의 응답 받는다.
         ResponseEntity<String> response = rt.exchange(
                 "https://nid.naver.com/oauth2.0/token", // https://{요청할 서버 주소}
@@ -92,9 +89,6 @@ public class SocialLoginController {
                 naverTokenRequest, // 요청할 때 보낼 데이터
                 String.class // 요청 시 반환되는 데이터 타입
         );
-
-        System.out.println("11111 = " + 11111);
-
 
         ObjectMapper om = new ObjectMapper();
         NaverOAuthToken naverOAuthToken = null;
@@ -105,10 +99,12 @@ public class SocialLoginController {
             e.printStackTrace();
         }
 
+        System.out.println("naverOAuthToken = " + naverOAuthToken);
+
         RestTemplate rt2 = new RestTemplate();
         HttpHeaders headers2 = new HttpHeaders();
         headers2.add("Authorization","Bearer "+ Objects.requireNonNull(naverOAuthToken).getAccess_token());
-        headers.add("Content-type","text/json;charset=utf-8");
+        headers2.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
 
         HttpEntity<MultiValueMap<String, String>> naverProfileRequest = new HttpEntity<>(headers2);
 
@@ -121,23 +117,38 @@ public class SocialLoginController {
                 String.class // 요청 시 반환되는 데이터 타입
         );
 
-        ObjectMapper om2 = new ObjectMapper();
-        UserNaverProfile userNaverProfile = null;
+        System.out.println("response2 = " + response2);
 
-        try{
-            userNaverProfile = om2.readValue(response2.getBody(),UserNaverProfile.class);
-        } catch (JsonProcessingException e){
+        int startIndex = response2.toString().indexOf("{");
+        int endIndex = response2.toString().lastIndexOf("}") + 1;
+        String jsonResponse = response2.toString().substring(startIndex, endIndex);
+        System.out.println("jsonResponse = " + jsonResponse);
+
+
+        UserNaverProfile userNaverProfile = new UserNaverProfile();
+
+        ObjectMapper om2 = new ObjectMapper();
+        try {
+            userNaverProfile = om2.readValue(jsonResponse, UserNaverProfile.class);
+
+            System.out.println("Nickname: " + userNaverProfile.getResponse().getNickname());
+            System.out.println("Email: " + userNaverProfile.getResponse().getEmail());
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
+        System.out.println("userNaverProfile = " + userNaverProfile);
+
         User user = User.builder()
-                .userId(userNaverProfile.getEmail())
-                .userName(userNaverProfile.getNickname())
+                .userId(userNaverProfile.getResponse().getEmail())
+                .userName(userNaverProfile.getResponse().getNickname())
                 .role(Role.ROLE_USER.getDescription())
                 .createAt(new Date())
                 .password("naver")
-                .unregist('Y')
+                .unregist('N')
                 .build();
+
+        System.out.println("user = " + user);
 
         String jwt = userService.socialLogin(Objects.requireNonNull(user));
 
@@ -197,6 +208,7 @@ public class SocialLoginController {
                 String.class // 요청 시 반환되는 데이터 타입
         );
 
+        System.out.println("response2 = " + response2);
         ObjectMapper om2 = new ObjectMapper();
         UserKakaoProfile userKakaoProfile = null;
 
@@ -207,12 +219,12 @@ public class SocialLoginController {
         }
 
         User user = User.builder()
-                .userId(String.valueOf(userKakaoProfile.getId()))
+                .userId(String.valueOf(userKakaoProfile.getKakaoAccount().getEmail()))
                 .password("kakao")
-                .userName("kakao" + userKakaoProfile.getId())
+                .userName(userKakaoProfile.getKakaoAccount().getProfile().getNickname())
                 .role(Role.ROLE_USER.getDescription())
                 .createAt(new Date())
-                .unregist('Y')
+                .unregist('N')
                 .build();
 
         String jwt = userService.socialLogin(Objects.requireNonNull(user));

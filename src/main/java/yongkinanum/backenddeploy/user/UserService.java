@@ -61,19 +61,8 @@ public class UserService {
     }
 
     @Transactional
-    public String socialLogin(UserKakaoProfile userKakaoProfile){
-
-        User user = User.builder()
-                .idx(userKakaoProfile.getId())
-                .userId("kakao" + userKakaoProfile.getId())
-                .userName("kakao" + userKakaoProfile.getId())
-                .unregist('N')
-                .createAt(new Date())
-                .role(Role.ROLE_USER.getDescription())
-                .password("1234")
-                .build();
-
-        User originUser = userJPARepository.findByUserId("kakao" + userKakaoProfile.getId());
+    public String socialLogin(User user){
+        User originUser = userJPARepository.findByUserId(user.getUserId());
         if(originUser == null){
             userJPARepository.save(user);
         }

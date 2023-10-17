@@ -9,4 +9,10 @@ class SocialLoginResponse {
     public static class KakaoDTO {
         private String kakaoUri;
     }
+
+    @Getter
+    @Setter
+    public static class NaverDTO {
+        private String naverUri;
+    }
 }

@@ -68,6 +68,7 @@ public class SecurityConfig {
                 authorize -> {
                     try {
                         authorize
+                                .antMatchers("/login/**", "/login/**/**").permitAll()
                                 .antMatchers(
                                         "/users", "/users/update", "/users/unregist",
                                         "/carts/**",

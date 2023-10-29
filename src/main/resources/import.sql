@@ -23,7 +23,7 @@ SET REFERENTIAL_INTEGRITY TRUE;
 -- 어드민 유저
 INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('1', 'rhalstjr1999', 'MinseokGo', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'ADMIN', '2023-08-29 13:54:19.823');
 INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('2', 'alstjr1999', '굽네사장', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'SHOPPER', '2023-08-29 13:54:19.823');
-INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('3', 'alstjr12', '악성리뷰러', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'USER', '2023-08-29 13:54:19.823');
+INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('3', 'alstjr12', '안한주', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'USER', '2023-08-29 13:54:19.823');
 INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('4', 'test', 'admin', '{bcrypt}$2a$10$9GKtBf/GS2xSpPaopBrEYOybbq3/PmN8q8TH9XortBCc6g0XwzRnq', 'N', 'USER', '2023-08-29 13:54:19.823');
 INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('5', 'alstjr6774', '굽네사장님2', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'SHOPPER', '2023-08-29 13:54:19.823');
 
@@ -79,14 +79,13 @@ INSERT INTO delivery_tb (`idx`, `address`, `status`, `order_idx`, `user_idx`) VA
 INSERT INTO delivery_tb (`idx`, `address`, `status`, `order_idx`, `user_idx`) VALUES ('3', '연산동', 'N', '2', '3');
 INSERT INTO delivery_tb (`idx`, `address`, `status`, `order_idx`, `user_idx`) VALUES ('2', '연산동', 'N', '3', '3');
 
--- INIT 리뷰
 INSERT INTO review_tb (`idx`, `content`, `star_point`, `create_at`, `user_idx`, `shop_idx`, `order_idx`, `delete`) VALUES ('1', '고추바사삭 잘 먹었습니다.', '5.0', '2023-08-29 13:54:19.823', '3', '1', '1', 'N');
 INSERT INTO review_tb (`idx`, `content`, `star_point`, `create_at`, `user_idx`, `shop_idx`, `order_idx`, `delete`) VALUES ('2', '순살 볼케이노는 진리네요.', '5.0', '2023-08-29 13:54:19.823', '3', '1', '1', 'N');
 INSERT INTO review_tb (`idx`, `content`, `star_point`, `create_at`, `user_idx`, `shop_idx`, `order_idx`, `delete`) VALUES ('3', '굽네 오리지널은 좀 물리면서도 굉장히 맛있습니다.', '5.0', '2023-08-29 13:54:19.823', '3', '1', '1', 'N');
 
 -- INIT POST
-INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`) VALUES ('1', '아 오늘같이 더운날 볼케이노로 더위 싹 날리시죠!!', '테스트 게시물입니다.', '17시', '연산동', '2', '2023-08-29 13:54:19.823', 'N', '3', '1');
-INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`) VALUES ('2', '굽네치킨 드실분!!', '테스트 게시물입니다.', '17시', '연산동', '2', '2023-08-29 13:54:19.823', 'N', '3', '1');
+INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`) VALUES ('1', '아 오늘같이 더운날 볼케이노로 더위 싹 날리시죠!!', '테스트 게시물입니다.', '17시', '부산 동래구 안락동 459-50', '2', '2023-08-29 13:54:19.823', 'N', '3', '1');
+INSERT INTO post_tb (`idx`, `title`, `content`, `time`, `place`, `people`, `create_at`, `delete`, `user_idx`, `shop_idx`) VALUES ('2', '굽네치킨 드실분!!', '테스트 게시물입니다.', '17시', '부산 동래구 안락동 459-50', '2', '2023-08-29 13:54:19.823', 'N', '3', '1');
 
 INSERT INTO share_tb (`idx`, `quantity`, `post_idx`, `option_idx`) VALUES ('1', '5', '1', '1');
 INSERT INTO share_tb (`idx`, `quantity`, `post_idx`, `option_idx`) VALUES ('2', '1', '1', '6');

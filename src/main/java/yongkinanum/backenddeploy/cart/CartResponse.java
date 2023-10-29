@@ -10,10 +10,12 @@ import java.util.stream.Collectors;
 class CartResponse {
     @Getter
     public static class FindDTO {
+        private Long postIdx;
         List<MenuDTO> menus;
         private int totalPrice;
 
         public FindDTO(List<Cart> carts) {
+            this.postIdx = 1L;
             this.menus = carts.stream()
                     // 중복되는 상품 걸러내기
                     .map(cart -> cart.getOption().getMenu())

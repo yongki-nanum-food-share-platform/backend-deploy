@@ -454,32 +454,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h3 id="_회원_가입">회원 가입</h3>
 <div class="sect3">
 <h4 id="_요청_예시">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /users/regist HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 114
-Host: localhost:8080
-
-{
-  "userName" : "고민석",
-  "userId" : "gominseok12",
-  "password" : "@@alstjr12",
-  "role" : "일반회원"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/join_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/join_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -487,30 +469,14 @@ Host: localhost:8080
 <h3 id="_로그인">로그인</h3>
 <div class="sect3">
 <h4 id="_요청_예시_2">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /users/login HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 60
-Host: localhost:8080
-
-{
-  "userId" : "rhalstjr1999",
-  "password" : "@@alstjr12"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/login_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_2">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/login_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -528,37 +494,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_3">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /users HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/find_user_info_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_3">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "idx" : 3,
-    "userId" : "alstjr12",
-    "userName" : "악성리뷰러",
-    "role" : "USER",
-    "posts" : [ {
-      "idx" : 1,
-      "title" : "테스트 포스트",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "idx" : 2,
-      "title" : "굽네치킨 드실분!!",
-      "createAt" : "2023-08-29 13:54:19.823"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/find_user_info_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -573,37 +516,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_4">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /users HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/find_user_info_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_4">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "idx" : 3,
-    "userId" : "alstjr12",
-    "userName" : "악성리뷰러",
-    "role" : "USER",
-    "posts" : [ {
-      "idx" : 1,
-      "title" : "테스트 포스트",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "idx" : 2,
-      "title" : "굽네치킨 드실분!!",
-      "createAt" : "2023-08-29 13:54:19.823"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/find_user_info_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -618,29 +538,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_5">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /users/2/shop HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/find_user_shop_info_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_5">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "idx" : 1,
-    "shopName" : "굽네치킨 부산안락점",
-    "shopAddress" : "부산광역시 동래구 안락동",
-    "tip" : 3000,
-    "description" : "굽네치킨 원조 부산 안락점입니다."
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/find_user_shop_info_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -655,29 +560,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_6">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /users/address/add HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 29
-Host: localhost:8080
-
-{
-  "address" : "안락동"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/add_user_address_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_6">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/add_user_address_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -692,27 +582,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_7">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /users/address HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/find_user_address_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_7">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "addresses" : [ {
-      "address" : "연산동"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/find_user_address_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -727,31 +604,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_8">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /users/update HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 87
-Host: localhost:8080
-
-{
-  "newNickname" : "앙앙기모띠",
-  "oldPassword" : null,
-  "newPassword" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/update_user_name_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_8">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/update_user_name_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -766,31 +626,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_9">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /users/update HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 103
-Host: localhost:8080
-
-{
-  "newNickname" : "앙앙기모띠",
-  "oldPassword" : "@@alstjr12",
-  "newPassword" : "@@alstjr12"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/update_user_info_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_9">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/update_user_info_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -805,31 +648,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_10">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /users/update HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 90
-Host: localhost:8080
-
-{
-  "newNickname" : null,
-  "oldPassword" : "@@alstjr12",
-  "newPassword" : "@@alstjr12"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/update_user_password_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_10">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/update_user_password_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -844,31 +670,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_11">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /users/update HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 90
-Host: localhost:8080
-
-{
-  "newNickname" : null,
-  "oldPassword" : "@@alstjr12",
-  "newPassword" : "@@alstjr12"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/update_user_password_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_11">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/user-integration-test/update_user_password_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -891,33 +700,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_12">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /shops/regist HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 180
-Host: localhost:8080
-
-{
-  "shopName" : "굽네치킨 부산토곡점",
-  "shopAddress" : "부산광역시 연제구 토곡동",
-  "tip" : "3000",
-  "description" : null,
-  "brandName" : "굽네치킨"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/regist_shop_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_12">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/regist_shop_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -925,34 +715,14 @@ Host: localhost:8080
 <h3 id="_가게_등록_시_브랜드_조회">가게 등록 시 브랜드 조회</h3>
 <div class="sect3">
 <h4 id="_요청_예시_13">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /shops/brand HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 28
-Host: localhost:8080
-
-{
-  "brandName" : "굽네"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/find_brand_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_13">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "idx" : 1,
-    "brandName" : "굽네치킨",
-    "image" : "/images/1.jpg",
-    "shopCount" : 2
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/find_brand_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -960,41 +730,14 @@ Host: localhost:8080
 <h3 id="_가게_리스트_조회">가게 리스트 조회</h3>
 <div class="sect3">
 <h4 id="_요청_예시_14">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /shops HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 24
-Host: localhost:8080
-
-{
-  "menuName" : "굽"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/find_all_shop_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_14">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "shops" : [ {
-      "idx" : 1,
-      "shopName" : "굽네치킨 부산안락점",
-      "description" : "굽네치킨 원조 부산 안락점입니다.",
-      "starCount" : 5.0
-    }, {
-      "idx" : 2,
-      "shopName" : "굽네치킨 부산연산점",
-      "description" : "안녕하세요. 맛있게 드시고 가세요.",
-      "starCount" : 0.0
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/find_all_shop_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1002,124 +745,14 @@ Host: localhost:8080
 <h3 id="_가게_조회">가게 조회</h3>
 <div class="sect3">
 <h4 id="_요청_예시_15">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /shops/1 HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/find_shop_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_15">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "idx" : 1,
-    "shopName" : "굽네치킨 부산안락점",
-    "shopAddress" : "부산광역시 동래구 안락동",
-    "shopDescription" : "굽네치킨 원조 부산 안락점입니다.",
-    "image" : "/images/1.jpg",
-    "starPoint" : 5.0,
-    "orderCount" : 3,
-    "reviewCount" : 3,
-    "menus" : [ {
-      "idx" : 3,
-      "menuName" : "굽네 오리지널",
-      "options" : [ {
-        "idx" : 11,
-        "optionName" : "뼈치킨",
-        "price" : 17000
-      }, {
-        "idx" : 12,
-        "optionName" : "순살치킨",
-        "price" : 19000
-      }, {
-        "idx" : 13,
-        "optionName" : "고블링 소스 추가",
-        "price" : 500
-      }, {
-        "idx" : 14,
-        "optionName" : "마블링 소스 추가",
-        "price" : 500
-      }, {
-        "idx" : 15,
-        "optionName" : "콜라 라지 변경",
-        "price" : 2000
-      } ]
-    }, {
-      "idx" : 2,
-      "menuName" : "볼케이노",
-      "options" : [ {
-        "idx" : 6,
-        "optionName" : "뼈치킨",
-        "price" : 19000
-      }, {
-        "idx" : 7,
-        "optionName" : "순살치킨",
-        "price" : 21000
-      }, {
-        "idx" : 8,
-        "optionName" : "고블링 소스 추가",
-        "price" : 500
-      }, {
-        "idx" : 9,
-        "optionName" : "마블링 소스 추가",
-        "price" : 500
-      }, {
-        "idx" : 10,
-        "optionName" : "콜라 라지 변경",
-        "price" : 2000
-      } ]
-    }, {
-      "idx" : 1,
-      "menuName" : "고추바사삭",
-      "options" : [ {
-        "idx" : 1,
-        "optionName" : "뼈치킨",
-        "price" : 19000
-      }, {
-        "idx" : 2,
-        "optionName" : "순살치킨",
-        "price" : 21000
-      }, {
-        "idx" : 3,
-        "optionName" : "고블링 소스 추가",
-        "price" : 500
-      }, {
-        "idx" : 4,
-        "optionName" : "마블링 소스 추가",
-        "price" : 500
-      }, {
-        "idx" : 5,
-        "optionName" : "콜라 라지 변경",
-        "price" : 2000
-      } ]
-    } ],
-    "reviews" : [ {
-      "idx" : 1,
-      "content" : "고추바사삭 잘 먹었습니다.",
-      "starPoint" : 5.0,
-      "userName" : "악성리뷰러",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "idx" : 2,
-      "content" : "순살 볼케이노는 진리네요.",
-      "starPoint" : 5.0,
-      "userName" : "악성리뷰러",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "idx" : 3,
-      "content" : "굽네 오리지널은 좀 물리면서도 굉장히 맛있습니다.",
-      "starPoint" : 5.0,
-      "userName" : "악성리뷰러",
-      "createAt" : "2023-08-29 13:54:19.823"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/find_shop_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1134,33 +767,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_16">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /shops/1/update HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 184
-Host: localhost:8080
-
-{
-  "idx" : 1,
-  "newName" : "굽네치킨 부산안락안락",
-  "newAddress" : "부산광역시 동래구 안락동",
-  "newTip" : "3000",
-  "newDescription" : "구미베어베어"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/update_shop_info_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_16">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/update_shop_info_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1175,24 +789,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_17">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /shops/1/unregist HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/delete_shop_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_17">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/shop-integration-test/delete_shop_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1212,35 +816,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_18">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /carts/add HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 166
-Host: localhost:8080
-
-[ {
-  "idx" : 1,
-  "quantity" : 5,
-  "shopName" : "굽네치킨 부산안락점"
-}, {
-  "idx" : 2,
-  "quantity" : 1,
-  "shopName" : "굽네치킨 부산안락점"
-} ]</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/cart-integration-test/add_carts_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_18">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/cart-integration-test/add_carts_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1255,79 +838,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_19">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /carts HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/cart-integration-test/find_carts_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_19">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "menus" : [ {
-      "idx" : 1,
-      "menuName" : "고추바사삭",
-      "carts" : [ {
-        "idx" : 1,
-        "option" : {
-          "idx" : 1,
-          "optionName" : "뼈치킨",
-          "price" : 19000
-        },
-        "quantity" : 5,
-        "price" : 95000
-      }, {
-        "idx" : 2,
-        "option" : {
-          "idx" : 3,
-          "optionName" : "고블링 소스 추가",
-          "price" : 500
-        },
-        "quantity" : 4,
-        "price" : 2000
-      }, {
-        "idx" : 3,
-        "option" : {
-          "idx" : 4,
-          "optionName" : "마블링 소스 추가",
-          "price" : 500
-        },
-        "quantity" : 3,
-        "price" : 1500
-      } ]
-    }, {
-      "idx" : 2,
-      "menuName" : "볼케이노",
-      "carts" : [ {
-        "idx" : 4,
-        "option" : {
-          "idx" : 6,
-          "optionName" : "뼈치킨",
-          "price" : 19000
-        },
-        "quantity" : 2,
-        "price" : 38000
-      }, {
-        "idx" : 5,
-        "option" : {
-          "idx" : 7,
-          "optionName" : "순살치킨",
-          "price" : 21000
-        },
-        "quantity" : 1,
-        "price" : 21000
-      } ]
-    } ],
-    "totalPrice" : 157500
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/cart-integration-test/find_carts_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1342,33 +860,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_20">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /carts/update HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 72
-Host: localhost:8080
-
-[ {
-  "idx" : 1,
-  "quantity" : 1
-}, {
-  "idx" : 2,
-  "quantity" : 1
-} ]</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/cart-integration-test/update_carts_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_20">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/cart-integration-test/update_carts_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1383,23 +882,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_21">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /carts/clear HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/cart-integration-test/clear_carts_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_21">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/cart-integration-test/clear_carts_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1419,25 +909,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_22">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /orders/save HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/save_order_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_22">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "orderIdx" : 4
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/save_order_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1445,54 +924,14 @@ Host: localhost:8080</code></pre>
 <h3 id="_결제_정보_조회">결제 정보 조회</h3>
 <div class="sect3">
 <h4 id="_요청_예시_23">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /orders/info HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 19
-Host: localhost:8080
-
-{
-  "postIdx" : 1
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/find_order_info_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_23">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "postIdx" : 1,
-    "shopName" : "굽네치킨 부산안락점",
-    "shopAddress" : "부산광역시 동래구 안락동",
-    "menus" : [ {
-      "idx" : 2,
-      "menuName" : "볼케이노",
-      "menuPrice" : 19000,
-      "options" : [ {
-        "idx" : 6,
-        "optionName" : "뼈치킨",
-        "optionPrice" : 19000
-      } ]
-    }, {
-      "idx" : 1,
-      "menuName" : "고추바사삭",
-      "menuPrice" : 19000,
-      "options" : [ {
-        "idx" : 1,
-        "optionName" : "뼈치킨",
-        "optionPrice" : 19000
-      } ]
-    } ],
-    "peoples" : [ "굽네사장", "MinseokGo" ],
-    "peopleCount" : 2
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/find_order_info_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1507,63 +946,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_24">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /orders HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/find_all_order_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_24">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "orders" : [ {
-      "idx" : 1,
-      "image" : "/images/1.jpg",
-      "createAt" : "2023-08-29 13:54:19.823",
-      "shopName" : "굽네치킨 부산안락점",
-      "orderName" : "고추바사삭 외 2건",
-      "items" : [ {
-        "idx" : 1,
-        "optionName" : "뼈치킨",
-        "quantity" : 10,
-        "price" : 190000
-      }, {
-        "idx" : 4,
-        "optionName" : "콜라 라지 변경",
-        "quantity" : 10,
-        "price" : 20000
-      }, {
-        "idx" : 5,
-        "optionName" : "뼈치킨",
-        "quantity" : 5,
-        "price" : 95000
-      } ],
-      "status" : "배달 완료",
-      "price" : 305000
-    }, {
-      "idx" : 3,
-      "image" : "/images/1.jpg",
-      "createAt" : "2023-08-30 13:54:19.823",
-      "shopName" : "굽네치킨 부산안락점",
-      "orderName" : "볼케이노 외 0건",
-      "items" : [ {
-        "idx" : 3,
-        "optionName" : "뼈치킨",
-        "quantity" : 1,
-        "price" : 16000
-      } ],
-      "status" : "배달 중",
-      "price" : 16000
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/find_all_order_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1578,54 +968,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_25">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /orders/1 HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/find_order_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_25">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "idx" : 1,
-    "shopName" : "굽네치킨 부산안락점",
-    "createAt" : "2023-08-29 13:54:19.823",
-    "address" : "연산동",
-    "status" : "배달 완료",
-    "totalPrice" : 305000,
-    "menus" : [ {
-      "idx" : 2,
-      "menuName" : "볼케이노",
-      "items" : [ {
-        "idx" : 5,
-        "optionName" : "뼈치킨",
-        "quantity" : 5,
-        "price" : 95000
-      } ]
-    }, {
-      "idx" : 1,
-      "menuName" : "고추바사삭",
-      "items" : [ {
-        "idx" : 1,
-        "optionName" : "뼈치킨",
-        "quantity" : 10,
-        "price" : 190000
-      }, {
-        "idx" : 4,
-        "optionName" : "콜라 라지 변경",
-        "quantity" : 10,
-        "price" : 20000
-      } ]
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/find_order_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1640,39 +990,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_26">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /orders/cancel HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/find_cancel_order_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_26">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "orders" : [ {
-      "idx" : 2,
-      "image" : "/images/1.jpg",
-      "createAt" : "2023-08-29 13:54:19.823",
-      "shopName" : "굽네치킨 부산안락점",
-      "orderName" : "고추바사삭 외 0건",
-      "items" : [ {
-        "idx" : 2,
-        "optionName" : "순살치킨",
-        "quantity" : 1,
-        "price" : 16000
-      } ],
-      "status" : "취소됨",
-      "price" : 16000
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/find_cancel_order_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1687,23 +1012,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_27">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /orders/1/delete HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/cancel_order_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_27">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/order-integration-test/cancel_order_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1726,41 +1042,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_28">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /posts/write HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 244
-Host: localhost:8080
-
-{
-  "title" : "테스트 제목",
-  "content" : "테스트 내용",
-  "options" : [ {
-    "idx" : 1,
-    "quantity" : 5
-  }, {
-    "idx" : 2,
-    "quantity" : 5
-  } ],
-  "time" : "17시",
-  "place" : "광안동",
-  "people" : "2",
-  "idx" : 1
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/write_post_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_28">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/write_post_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1775,41 +1064,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_29">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /posts HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/find_all_post_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_29">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "posts" : [ {
-      "idx" : 1,
-      "image" : "/images/1.jpg",
-      "title" : "테스트 포스트",
-      "time" : "17시",
-      "place" : "연산동",
-      "menuName" : "고추바사삭 외 1건",
-      "people" : "2"
-    }, {
-      "idx" : 2,
-      "image" : "/images/1.jpg",
-      "title" : "굽네치킨 드실분!!",
-      "time" : "17시",
-      "place" : "연산동",
-      "menuName" : "고추바사삭 외 1건",
-      "people" : "2"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/find_all_post_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1824,47 +1086,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_30">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /posts/1 HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/find_post_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_30">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "idx" : 1,
-    "title" : "테스트 포스트",
-    "content" : "테스트 게시물입니다.",
-    "authorIdx" : 3,
-    "author" : "악성리뷰러",
-    "createAt" : "2023-08-29 13:54:19.823",
-    "time" : "17시",
-    "place" : "연산동",
-    "people" : "2",
-    "menuName" : "고추바사삭",
-    "shares" : [ {
-      "idx" : 1,
-      "quantity" : 5,
-      "optionName" : "뼈치킨"
-    }, {
-      "idx" : 2,
-      "quantity" : 1,
-      "optionName" : "뼈치킨"
-    } ],
-    "shopIdx" : 1,
-    "shopName" : "굽네치킨 부산안락점",
-    "image" : "/images/1.jpg",
-    "tip" : 3000
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/find_post_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1879,39 +1108,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_31">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /posts/search HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 24
-Host: localhost:8080
-
-{
-  "title" : "치킨"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/search_post_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_31">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "posts" : [ {
-      "idx" : 2,
-      "image" : "/images/1.jpg",
-      "title" : "굽네치킨 드실분!!",
-      "time" : "17시",
-      "place" : "연산동",
-      "menuName" : "고추바사삭 외 1건",
-      "people" : "2"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/search_post_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1929,33 +1133,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_32">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /posts/1/update HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 128
-Host: localhost:8080
-
-{
-  "title" : "수정 테스트",
-  "content" : "수정 내용",
-  "time" : "18시",
-  "place" : "연산동",
-  "people" : "3"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/update_post_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_32">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/update_post_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1970,23 +1155,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_33">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /posts/1/delete HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/delete_post_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_33">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/post-integration-test/delete_post_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2006,31 +1182,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_34">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /reviews/write HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 70
-Host: localhost:8080
-
-{
-  "idx" : 1,
-  "content" : "테스트 리뷰",
-  "starPoint" : 0.0
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/review-integration-test/write_review_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_34">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/review-integration-test/write_review_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2045,46 +1204,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_35">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /reviews HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/review-integration-test/find_review_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_35">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "reviews" : [ {
-      "idx" : 1,
-      "content" : "고추바사삭 잘 먹었습니다.",
-      "starPoint" : 5.0,
-      "shopName" : "굽네치킨 부산안락점",
-      "orderName" : "고추바사삭 외 2건",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "idx" : 2,
-      "content" : "순살 볼케이노는 진리네요.",
-      "starPoint" : 5.0,
-      "shopName" : "굽네치킨 부산안락점",
-      "orderName" : "고추바사삭 외 2건",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "idx" : 3,
-      "content" : "굽네 오리지널은 좀 물리면서도 굉장히 맛있습니다.",
-      "starPoint" : 5.0,
-      "shopName" : "굽네치킨 부산안락점",
-      "orderName" : "고추바사삭 외 2건",
-      "createAt" : "2023-08-29 13:54:19.823"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/review-integration-test/find_review_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2099,29 +1226,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_36">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /reviews/1/update HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 43
-Host: localhost:8080
-
-{
-  "content" : "리뷰 수정 테스트"
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/review-integration-test/update_review_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_36">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/review-integration-test/update_review_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2136,23 +1248,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_37">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /reviews/1/delete HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/review-integration-test/delete_review_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_37">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/review-integration-test/delete_review_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2172,29 +1275,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_38">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /notices/write HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 66
-Host: localhost:8080
-
-{
-  "content" : "구미 황상교가 빗물에 붕괴됐어요."
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/notice-integration-test/write_notice_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_38">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/notice-integration-test/write_notice_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2209,58 +1297,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_39">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /notices HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/notice-integration-test/find_notice_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_39">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "notices" : [ {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    }, {
-      "content" : "테스트 동네소식",
-      "createAt" : "2023-08-29 13:54:19.823"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/notice-integration-test/find_notice_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2286,29 +1330,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_40">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /chats/enter HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 15
-Host: localhost:8080
-
-{
-  "idx" : 1
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/chat-integration-test/enter_chat_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_40">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/chat-integration-test/enter_chat_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2323,29 +1352,14 @@ Host: localhost:8080
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_41">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /chats HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/chat-integration-test/find_all_chat_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_41">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "chats" : [ {
-      "idx" : 1,
-      "chatTitle" : "`굽네치킨 드실분!!` 게시물의 채팅방",
-      "lastMsg" : "다들 반갑습니다"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/chat-integration-test/find_all_chat_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2360,38 +1374,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_42">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /chats/1 HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/chat-integration-test/find__chat_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_42">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : {
-    "idx" : 1,
-    "messages" : [ {
-      "idx" : 1,
-      "userName" : "MinseokGo",
-      "content" : "안녕하세요"
-    }, {
-      "idx" : 2,
-      "userName" : "굽네사장",
-      "content" : "네, 안녕하세요"
-    }, {
-      "idx" : 3,
-      "userName" : "악성리뷰러",
-      "content" : "다들 반갑습니다"
-    } ]
-  },
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/chat-integration-test/find__chat_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>
@@ -2406,23 +1396,14 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_요청_예시_43">요청 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /chats/1/delete HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/chat-integration-test/delete_chat_test/http-request.adoc[]</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_응답_예시_43">응답 예시</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code>{
-  "success" : true,
-  "response" : null,
-  "error" : null
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Unresolved directive in api-docs.adoc - include::./build/generated-snippets/chat-integration-test/delete_chat_test/response-body.adoc[]</p>
 </div>
 </div>
 </div>

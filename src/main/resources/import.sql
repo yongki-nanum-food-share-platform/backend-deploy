@@ -28,7 +28,7 @@ INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, 
 INSERT INTO user_tb (`idx`,`user_id`,`user_name`,`password`,`unregist`, `role`, `create_at`) VALUES ('5', 'alstjr6774', '굽네사장님2', '{bcrypt}$2a$10$IzO1kAzNob.oxB0UShJtTOCkkn3xi5ZuEbv8L1AAwDNEeFNQsEJ0m', 'N', 'SHOPPER', '2023-08-29 13:54:19.823');
 
 -- INIT 주소
-INSERT INTO address_tb (`idx`, `address`, `user_idx`) VALUES ('1', '연산동', '3');
+INSERT INTO address_tb (`idx`, `address`, `user_idx`) VALUES ('1', '부산 동래구 안락동 459-50', '3');
 
 -- INIT 브랜드
 INSERT INTO brand_tb (`idx`, `brand_name`, `image`) VALUES ('1', '굽네치킨', '/images/1.jpg');
